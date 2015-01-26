@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+		version="2.1">
+	<display-name>Tikron JSF-Komponenten Version 2.0</display-name>
+	<tlib-version>2.0</tlib-version>
+	<short-name>tcf</short-name>
+	<uri>http://tikron.de/tikron-common-faces</uri>
+	<!-- Custom tag "outputDelimited" -->
+	<tag>
+		<description>Gibt Text in der maximal angegebenen Länge aus.</description>
+		<name>outputDelimited</name>
+		<tag-class>de.tikron.faces.component.OutputDelimited</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>CSS-Klasse</description>
+			<name>styleClass</name>
+			<required>false</required>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Der Text</description>
+			<name>value</name>
+			<required>true</required>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Maximale Länge</description>
+			<name>maxLength</name>
+			<required>true</required>
+			<deferred-value>
+				<type>java.lang.Integer</type>
+			</deferred-value>
+		</attribute>
+	</tag>
+	<!-- Custom tag "outputLabel" -->
+	<tag>
+		<description>Ein OutputLabel erweitert um die Möglichkeit, auf ein erforderliches Feld hinzuweisen.</description>
+		<name>outputLabel</name>
+		<tag-class>de.tikron.faces.component.OutputLabel</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<description>Id der Komponente, der das Label zugewiesen wird</description>
+			<name>for</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Komponenten-Id</description>
+			<name>id</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Gibt an, ob eine Eingabe erforderlich ist</description>
+			<name>required</name>
+			<deferred-value>
+				<type>java.lang.Boolean</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>CSS-Klasse zum Formatieren des Anzeigers für erforderliche Eingabe</description>
+			<name>requiredClass</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>CSS-Klasse</description>
+			<name>styleClass</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Der Text des Labels</description>
+			<name>value</name>
+			<required>true</required>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+	</tag>
+	<!-- Custom tag "outputTextarea" -->
+	<tag>
+		<description>Gibt Text mit Berücksichtigung von Zeilenvorschubzeichen aus.</description>
+		<name>outputTextarea</name>
+		<tag-class>de.tikron.faces.component.OutputTextarea</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>CSS-Klasse</description>
+			<name>styleClass</name>
+			<required>false</required>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Der Text</description>
+			<name>value</name>
+			<required>true</required>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+	</tag>
+</taglib>
