@@ -23,4 +23,5 @@
 			<artifactId>javax.servlet-api</artifactId>
 		</dependency>
 	</dependencies>
+	<version>2.0.1-SNAPSHOT</version>
 </project>
