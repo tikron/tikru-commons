@@ -9,10 +9,9 @@ import java.util.Properties;
 
 import javax.servlet.ServletContext;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.springframework.web.context.ServletContextAware;
-
-import de.tikron.common.Util;
 
 /**
  * Liefert Basisfunktionen zum Konfigrieren der Anwendung. Die Konfiguration wird im Klassenpfad als XML-Datei mit dem
@@ -56,7 +55,7 @@ public class ConfigurationServiceImpl implements ConfigurationService, ServletCo
 			} catch (IOException e) {
 				throw new ConfigurationException(e.getMessage());
 			} finally {
-				Util.close(is);
+				IOUtils.closeQuietly(is);
 			}
 		}
 		return properties;
