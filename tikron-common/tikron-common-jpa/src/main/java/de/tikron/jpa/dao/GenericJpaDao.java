@@ -3,6 +3,7 @@
  */
 package de.tikron.jpa.dao;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -23,17 +24,17 @@ import de.tikron.jpa.domain.Entity;
  * 
  * @author Titus Kruse
  */
-public abstract class BaseJpaDao<T extends Entity> implements Dao<T> {
+public abstract class GenericJpaDao<T extends Entity<ID>, ID extends Serializable> implements GenericDao<T, ID> {
 
 	protected EntityManager entityManager;
 
 	private Class<T> clazz;
 
-	public BaseJpaDao(Class<T> clazz) {
+	public GenericJpaDao(Class<T> clazz) {
 		this.clazz = clazz;
 	}
 
-	public BaseJpaDao(Class<T> clazz, EntityManager entityManager) {
+	public GenericJpaDao(Class<T> clazz, EntityManager entityManager) {
 		this.clazz = clazz;
 		this.entityManager = entityManager;
 	}
@@ -44,7 +45,7 @@ public abstract class BaseJpaDao<T extends Entity> implements Dao<T> {
 	}
 
 	@Override
-	public T findById(Object id) {
+	public T findById(ID id) {
 		return entityManager.find(clazz, id);
 	}
 
@@ -54,7 +55,7 @@ public abstract class BaseJpaDao<T extends Entity> implements Dao<T> {
 	}
 
 	@Override
-	public T getReference(Object id) {
+	public T getReference(ID id) {
 		return entityManager.getReference(clazz, id);
 	}
 
@@ -76,7 +77,7 @@ public abstract class BaseJpaDao<T extends Entity> implements Dao<T> {
 	}
 
 	@Override
-	public T findWithDepth(Object id, String... fetchRelations) {
+	public T findWithDepth(ID id, String... fetchRelations) {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(clazz);
 		Root<T> root = criteriaQuery.from(clazz);
@@ -105,12 +106,12 @@ public abstract class BaseJpaDao<T extends Entity> implements Dao<T> {
 	}
 
 	/**
-	 * Returns the Object (primary key) of the given entity.
+	 * Returns the ID (primary key) of the given entity.
 	 * 
 	 * @param entity The entity.
-	 * @return The Object.
+	 * @return The ID.
 	 */
-	protected Object getId(T entity) {
+	protected ID getId(T entity) {
 		return entity.getId();
 	}
 	

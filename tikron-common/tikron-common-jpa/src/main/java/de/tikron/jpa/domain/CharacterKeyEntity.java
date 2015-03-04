@@ -19,7 +19,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * @author Titus Kruse
  */
 @MappedSuperclass
-public abstract class CharacterKeyEntity implements Entity {
+public abstract class CharacterKeyEntity implements Entity<String> {
 
 	@Id
 	@Column(columnDefinition = "char(64)")

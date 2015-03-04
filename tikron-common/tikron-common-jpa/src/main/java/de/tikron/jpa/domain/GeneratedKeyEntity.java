@@ -20,7 +20,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * @author Titus Kruse
  */
 @MappedSuperclass
-public abstract class GeneratedKeyEntity implements Entity {
+public abstract class GeneratedKeyEntity implements Entity<Long> {
 
 	@Id
 	@Column

@@ -3,6 +3,7 @@
  */
 package de.tikron.jpa.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import de.tikron.jpa.domain.Entity;
@@ -12,7 +13,7 @@ import de.tikron.jpa.domain.Entity;
  * 
  * @author Titus Kruse
  */
-public interface Dao<T extends Entity> {
+public interface GenericDao<T extends Entity<ID>, ID extends Serializable> {
 
 	/**
 	 * Eine Entität auf Basis des Primärschlüssel holen.
@@ -20,7 +21,7 @@ public interface Dao<T extends Entity> {
 	 * @param id Der Primärschlüssel.
 	 * @return Die Entität.
 	 */
-	public T findById(Object id);
+	public T findById(ID id);
 
 	/**
 	 * Eine Liste aller Entitäten holen.
@@ -39,7 +40,7 @@ public interface Dao<T extends Entity> {
 	 * 
 	 * @see http://jdevelopment.nl/fetching-arbitrary-object-graphs-jpa-2/
 	 */
-	public T findWithDepth(Object id, String... fetchRelations);
+	public T findWithDepth(ID id, String... fetchRelations);
 
 	/**
 	 * Eine Entität auf Basis des Primärschlüssel holen.
@@ -47,7 +48,7 @@ public interface Dao<T extends Entity> {
 	 * @param id Der Primärschlüssel.
 	 * @return Die Entität.
 	 */
-	public T getReference(Object id);
+	public T getReference(ID id);
 
 	/**
 	 * Eine Entität speichern.

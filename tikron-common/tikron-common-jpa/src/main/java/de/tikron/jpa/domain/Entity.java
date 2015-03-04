@@ -11,14 +11,14 @@ import java.io.Serializable;
  * @date 25.03.2009
  * @author Titus Kruse
  */
-public interface Entity extends Serializable {
+public interface Entity<ID extends Serializable> extends Serializable {
 
 	/**
 	 * Liefert die ID der Entität.
 	 * 
 	 * @return Die ID.
 	 */
-	public Object getId();
+	public ID getId();
 
 	/**
 	 * Liefert die Version der Entität.
