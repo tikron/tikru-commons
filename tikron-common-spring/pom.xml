@@ -5,6 +5,7 @@
 		<groupId>de.tikron.common</groupId>
 		<artifactId>tikron-common</artifactId>
 		<version>1.0.1-SNAPSHOT</version>
+		<relativePath>../tikron-common</relativePath>
 	</parent>
 	<artifactId>tikron-common-spring</artifactId>
 	<name>Tikron Spring Framework Utilities</name>

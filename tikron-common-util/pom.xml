@@ -5,21 +5,14 @@
 		<groupId>de.tikron.common</groupId>
 		<artifactId>tikron-common</artifactId>
 		<version>1.0.1-SNAPSHOT</version>
+		<relativePath>../tikron-common</relativePath>
 	</parent>
-	<artifactId>tikron-common-jpa</artifactId>
-	<name>Tikron JPA Utilities</name>
+	<artifactId>tikron-common-util</artifactId>
+	<name>Tikron Common Utilities</name>
 	<dependencies>
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
 		</dependency>
 	</dependencies>
 </project>

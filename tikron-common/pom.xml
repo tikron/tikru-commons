@@ -26,9 +26,9 @@
 		<relativePath>../../tikron/tikron</relativePath>
 	</parent>
 	<modules>
-		<module>tikron-common-util</module>
-		<module>tikron-common-faces</module>
-		<module>tikron-common-jpa</module>
-		<module>tikron-common-spring</module>
+		<module>../tikron-common-util</module>
+		<module>../tikron-common-faces</module>
+		<module>../tikron-common-jpa</module>
+		<module>../tikron-common-spring</module>
 	</modules>
 </project>
