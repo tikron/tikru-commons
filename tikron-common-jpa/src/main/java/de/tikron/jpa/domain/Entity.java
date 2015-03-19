@@ -6,7 +6,10 @@ package de.tikron.jpa.domain;
 import java.io.Serializable;
 
 /**
- * Deklariert Methoden, die von allen Entitäten angeboten werden müssen.
+ * A persistent object identified by a unique key. (The opposite if a value object.) This is typically the primary key
+ * of the underlying database table.
+ * 
+ * @param ID The type of the unique identifier used to access the entity.
  *
  * @date 25.03.2009
  * @author Titus Kruse
@@ -14,17 +17,10 @@ import java.io.Serializable;
 public interface Entity<ID extends Serializable> extends Serializable {
 
 	/**
-	 * Liefert die ID der Entität.
+	 * Returns the unique identifier of the entity.
 	 * 
-	 * @return Die ID.
+	 * @return The identifier.
 	 */
 	public ID getId();
-
-	/**
-	 * Liefert die Version der Entität.
-	 * 
-	 * @return Die Version.
-	 */
-	public Integer getVersion();
 
 }

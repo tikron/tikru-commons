@@ -14,13 +14,13 @@ import javax.persistence.Version;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
- * Stellt eine Basis-Entität für Tabelle mit generiertem Primärschlüssel zur Verfügung.
+ * An entity identified by a unique numeric key. 
  *
  * @date 25.03.2009
  * @author Titus Kruse
  */
 @MappedSuperclass
-public abstract class GeneratedKeyEntity implements Entity<Long> {
+public abstract class GeneratedKeyEntity implements Entity<Long>, Versioned, Historical {
 
 	@Id
 	@Column
@@ -34,44 +34,32 @@ public abstract class GeneratedKeyEntity implements Entity<Long> {
 	@Column(name = "created_on")
 	protected Date createdOn;
 
-	/**
-	 * Erstellt eine Entität. Dabei wird der Erstellungszeitpunkt auf die aktuelle Zeit gesetzt.
-	 */
 	public GeneratedKeyEntity() {
 		this.createdOn = new Date();
 	}
 	
+	/**
+	 * Copy constructor.
+	 * 
+	 * @param e The GeneratedKeyEntity to copy from.
+	 */
 	protected GeneratedKeyEntity(GeneratedKeyEntity e) {
 		this.id = e.id;
 		this.version = e.version;
 		this.createdOn = e.createdOn;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.freakworm.data.Entity#getId()
-	 */
 	@Override
 	public Long getId() {
 		return this.id;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.freakworm.data.Entity#getVersion()
-	 */
 	@Override
 	public Integer getVersion() {
 		return this.version;
 	}
 
-	/**
-	 * Liefert den Zeitpunkt der Erstellung dieser Entität.
-	 * 
-	 * @return Zeitpunkt der Erstellung.
-	 */
+	@Override
 	public Date getCreatedOn() {
 		return this.createdOn;
 	}

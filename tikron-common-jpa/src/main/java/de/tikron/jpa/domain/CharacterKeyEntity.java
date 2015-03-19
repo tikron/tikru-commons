@@ -13,13 +13,13 @@ import javax.persistence.Version;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
- * Definiert allen Entitäten gemeinsame Felder.
+ * An entity identified by a natural key.
  *
  * @date 21.03.2012
  * @author Titus Kruse
  */
 @MappedSuperclass
-public abstract class CharacterKeyEntity implements Entity<String> {
+public abstract class CharacterKeyEntity implements Entity<String>, Versioned, Historical {
 
 	@Id
 	@Column(columnDefinition = "char(64)")
@@ -32,40 +32,37 @@ public abstract class CharacterKeyEntity implements Entity<String> {
 	@Column(name = "created_on")
 	protected Date createdOn;
 
+	// Required for Hibernate
 	public CharacterKeyEntity() {
-		this(null);
 	}
 
 	public CharacterKeyEntity(String id) {
 		this.id = id;
 		this.createdOn = new Date();
 	}
-
-	/*
-	 * (non-Javadoc)
+	
+	/**
+	 * Copy constructor.
 	 * 
-	 * @see de.freakworm.data.Entity#getId()
+	 * @param e The CharacterKeyEntity to copy from.
 	 */
+	protected CharacterKeyEntity(CharacterKeyEntity e) {
+		this.id = e.id;
+		this.version = e.version;
+		this.createdOn = e.createdOn;
+	}
+
 	@Override
 	public String getId() {
 		return this.id;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.freakworm.data.Entity#getVersion()
-	 */
 	@Override
 	public Integer getVersion() {
 		return this.version;
 	}
 
-	/**
-	 * Liefert den Zeitpunkt der Erstellung dieser Entität.
-	 * 
-	 * @return Zeitpunkt der Erstellung.
-	 */
+	@Override
 	public Date getCreatedOn() {
 		return this.createdOn;
 	}
