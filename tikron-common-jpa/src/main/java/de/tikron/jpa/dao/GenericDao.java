@@ -51,7 +51,7 @@ public interface GenericDao<T extends Entity<ID>, ID extends Serializable> {
 	public T getReference(ID id);
 
 	/**
-	 * Eine Entität speichern.
+	 * Eine Entität hinzufügen.
 	 * 
 	 * @param entity Die Entität.
 	 */
@@ -63,6 +63,13 @@ public interface GenericDao<T extends Entity<ID>, ID extends Serializable> {
 	 * @param entity Die Entität.
 	 */
 	public T update(T entity);
+
+	/**
+	 * Eine Entität speichern.
+	 * 
+	 * @param entity Die Entität.
+	 */
+	public T save(T entity);
 
 	/**
 	 * Eine Entität löschen.
