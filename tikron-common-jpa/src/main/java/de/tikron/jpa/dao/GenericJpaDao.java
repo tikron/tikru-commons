@@ -72,11 +72,10 @@ public abstract class GenericJpaDao<T extends Entity<ID>, ID extends Serializabl
 
 	@Override
 	public T save(T entity) {
-		if (entity.getId() != null)
-			return entityManager.merge(entity);
+		if (entity.getId() == null)
+			return insert(entity);
 		else {
-			entityManager.persist(entity);
-			return entity;
+			return update(entity);
 		}
 	}
 
