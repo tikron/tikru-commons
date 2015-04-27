@@ -135,13 +135,7 @@ public abstract class GenericJpaDao<T extends Entity<ID>, ID extends Serializabl
 	 * @throws NonUniqueResultException Thrown, if the query result has more than one entity.
 	 */
 	protected T singleResultOrNull(TypedQuery<T> query) {
-		List<T> result = query.getResultList();
-		if (result.isEmpty())
-			return null;
-		else if (result.size() == 1)
-			return result.get(0);
-		else
-			throw new NonUniqueResultException();
+		return JpaUtil.singleResultOrNull(query);
 	}
 
 	/**

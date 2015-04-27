@@ -4,8 +4,11 @@
 package de.tikron.jpa.dao;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NonUniqueResultException;
+import javax.persistence.TypedQuery;
 
 /**
  * Some utility methods to use with JPA. 
@@ -50,6 +53,26 @@ public class JpaUtil {
 				initialize(em, entity);
 			}
 		}
+	}
+	
+	/**
+	 * Executes the given query and returns the single result or null.
+	 * 
+	 * This helper method is a replacement for Query.getSingleResult() as it returns null instead of throwing
+	 * NoResultException. The method should be used for access by a unique key.
+	 * 
+	 * @param query The typed query to execute.
+	 * @return The single result or null, if no matching entity found.
+	 * @throws NonUniqueResultException Thrown, if the query result has more than one entity.
+	 */
+	public static <E extends Object> E singleResultOrNull(TypedQuery<E> query) {
+		List<E> result = query.getResultList();
+		if (result.isEmpty())
+			return null;
+		else if (result.size() == 1)
+			return result.get(0);
+		else
+			throw new NonUniqueResultException();
 	}
 
 }
