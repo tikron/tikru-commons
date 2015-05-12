@@ -36,9 +36,10 @@ public class FormattedTextCompiler {
 	/**
 	 * Possible attributes controlling the compilation behaviour.
 	 */
-	public static enum Attribute {CONVERT_NEWLINE};
+	public static enum Attribute {PROCESS_COMMANDS, CONVERT_NEWLINE};
 	
 	private static final AttributeMap DEFAULT_ATTRIBUTES = new AttributeMap(){{
+		put(Attribute.PROCESS_COMMANDS, Boolean.TRUE);
 		put(Attribute.CONVERT_NEWLINE, Boolean.TRUE);
 	}};
 	
@@ -68,25 +69,30 @@ public class FormattedTextCompiler {
 	public String compile(final CharSequence input, AttributeMap attributes) {
 		if (input == null)
 			return null;
+		String output;
 		// Process commands
-	  Matcher m = COMMAND_PATTERN.matcher(input);
-	  StringBuffer sb = new StringBuffer(input.length());
-	  while (m.find()) {
-	    String commandLine = m.group(1);
-	    Command cmd = parseCommandLine(commandLine);
-	    if (COMMAND_LINK.equals(cmd.getCommandName())) {
-				String html = processLink(cmd);
-				m.appendReplacement(sb, Matcher.quoteReplacement(html));
-	    } else if (COMMAND_BOLD.equals(cmd.getCommandName())) {
-				String html = processBold(cmd);
-				m.appendReplacement(sb, Matcher.quoteReplacement(html));
-	    } else {
-	    	System.err.println(MessageFormat.format("Unknown text compiler command: {0}.", cmd.getCommandName()));
-	    }
+	  if (attributes.getBoolean(Attribute.PROCESS_COMMANDS)) {
+		  Matcher m = COMMAND_PATTERN.matcher(input);
+		  StringBuffer sb = new StringBuffer(input.length());
+		  while (m.find()) {
+		    String commandLine = m.group(1);
+		    Command cmd = parseCommandLine(commandLine);
+		    if (COMMAND_LINK.equals(cmd.getCommandName())) {
+					String html = processLink(cmd);
+					m.appendReplacement(sb, Matcher.quoteReplacement(html));
+		    } else if (COMMAND_BOLD.equals(cmd.getCommandName())) {
+					String html = processBold(cmd);
+					m.appendReplacement(sb, Matcher.quoteReplacement(html));
+		    } else {
+		    	System.err.println(MessageFormat.format("Unknown text compiler command: {0}.", cmd.getCommandName()));
+		    }
+		  }
+		  m.appendTail(sb);
+		  output = sb.toString();
+	  } else {
+			output = input.toString();
 	  }
-	  m.appendTail(sb);
 	  // Convert NewLine to <BR/>
-	  String output = sb.toString();
 	  if (attributes.getBoolean(Attribute.CONVERT_NEWLINE)) {
 	  	output = convertNewline(output);
 	  }
@@ -202,7 +208,9 @@ public class FormattedTextCompiler {
 		 */
 		public boolean getBoolean(Attribute key) {
 			Object value = get(key);
-			if (value instanceof Boolean) {
+			if (value == null) {
+				return false;
+			} else if (value instanceof Boolean) {
 				return ((Boolean) value).booleanValue();
 			} else {
 				throw new IllegalArgumentException("Attribute value not of type Boolean: " + key);
