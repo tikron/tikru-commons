@@ -14,5 +14,7 @@ public interface ValidationConstants {
 	public static final String EMAIL_MASK = "[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\\.)+[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?";
 	
 	public static final String URL_MASK = "(https?:\\/\\/)?([\\dA-Za-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?";
+	
+	public static final String URL_MASK_DE = "(https?:\\/\\/)?([\\dA-Za-z\\.-]+)\\.([at|ch|de])([\\/\\w \\.-]*)*\\/?";
 
 }
