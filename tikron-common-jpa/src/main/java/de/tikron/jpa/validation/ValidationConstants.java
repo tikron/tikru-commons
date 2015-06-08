@@ -15,6 +15,6 @@ public interface ValidationConstants {
 	
 	public static final String URL_MASK = "(https?:\\/\\/)?([\\dA-Za-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?";
 	
-	public static final String URL_MASK_DE = "(https?:\\/\\/)?([\\dA-Za-z\\.-]+)\\.([at|ch|de])([\\/\\w \\.-]*)*\\/?";
+	public static final String URL_MASK_DE = "(https?:\\/\\/)?([\\dA-Za-z\\.-]+)\\.(at|ch|de)([\\/\\w \\.-]*)*\\/?";
 
 }
