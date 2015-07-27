@@ -38,9 +38,33 @@ public class FormattedTextCompiler {
 	 */
 	public static enum Attribute {PROCESS_COMMANDS, CONVERT_NEWLINE};
 	
-	private static final AttributeMap DEFAULT_ATTRIBUTES = new AttributeMap(){{
-		put(Attribute.PROCESS_COMMANDS, Boolean.TRUE);
-		put(Attribute.CONVERT_NEWLINE, Boolean.TRUE);
+	/**
+	 * Possible command actions:
+	 * 
+	 * HTML: Conpile to HTML.
+	 * DISCARD: Discard command and take text only.
+	 * NONE: Do nothing.
+	 */
+	public static enum AttrCommandAction {HTML, DISCARD, NONE};
+	
+	/**
+	 * Possible new line actions:
+	 * 
+	 * HTML: Compile to HTML.
+	 * SPACE: Compile to space character.
+	 * DISCARD: Discard new line character.
+	 * NONE: Do nothing.
+	 */
+	public static enum AttrNewLineAction {HTML, SPACE, DISCARD, NONE};
+	
+	public static final AttributeMap DEFAULT_ATTRIBUTES = new AttributeMap(){{
+		put(Attribute.PROCESS_COMMANDS, AttrCommandAction.HTML);
+		put(Attribute.CONVERT_NEWLINE, AttrNewLineAction.HTML);
+	}};
+	
+	public static final AttributeMap DISCARD_ALL = new AttributeMap(){{
+		put(Attribute.PROCESS_COMMANDS, AttrCommandAction.DISCARD);
+		put(Attribute.CONVERT_NEWLINE, AttrNewLineAction.DISCARD);
 	}};
 	
 	private FormattedTextCompiler() {};
@@ -71,21 +95,23 @@ public class FormattedTextCompiler {
 			return null;
 		String output;
 		// Process commands
-	  if (attributes.getBoolean(Attribute.PROCESS_COMMANDS)) {
+		AttrCommandAction commandAction = (AttrCommandAction) attributes.get(Attribute.PROCESS_COMMANDS);
+	  if (AttrCommandAction.HTML.equals(commandAction) || AttrCommandAction.DISCARD.equals(commandAction)) {
 		  Matcher m = COMMAND_PATTERN.matcher(input);
 		  StringBuffer sb = new StringBuffer(input.length());
 		  while (m.find()) {
-		    String commandLine = m.group(1);
-		    Command cmd = parseCommandLine(commandLine);
-		    if (COMMAND_LINK.equals(cmd.getCommandName())) {
-					String html = processLink(cmd);
+				String commandLine = m.group(1);
+				Command cmd = parseCommandLine(commandLine);
+				boolean discardCommand = AttrCommandAction.DISCARD.equals(commandAction);
+				if (COMMAND_LINK.equals(cmd.getCommandName())) {
+					String html = processLink(cmd, discardCommand);
 					m.appendReplacement(sb, Matcher.quoteReplacement(html));
-		    } else if (COMMAND_BOLD.equals(cmd.getCommandName())) {
-					String html = processBold(cmd);
+				} else if (COMMAND_BOLD.equals(cmd.getCommandName())) {
+					String html = processBold(cmd, discardCommand);
 					m.appendReplacement(sb, Matcher.quoteReplacement(html));
-		    } else {
-		    	System.err.println(MessageFormat.format("Unknown text compiler command: {0}.", cmd.getCommandName()));
-		    }
+				} else {
+					System.err.println(MessageFormat.format("Unknown text compiler command: {0}.", cmd.getCommandName()));
+				} 
 		  }
 		  m.appendTail(sb);
 		  output = sb.toString();
@@ -93,15 +119,22 @@ public class FormattedTextCompiler {
 			output = input.toString();
 	  }
 	  // Convert NewLine to <BR/>
-	  if (attributes.getBoolean(Attribute.CONVERT_NEWLINE)) {
-	  	output = convertNewline(output);
+	  AttrNewLineAction newLineAction = (AttrNewLineAction) attributes.get(Attribute.CONVERT_NEWLINE);
+	  if (newLineAction != null) {
+	  	output = convertNewline(output, newLineAction);
 	  }
 		return output;
 	}
 	
-	private static String convertNewline(final String input) {
-		if (input != null)
+	private static String convertNewline(final String input, AttrNewLineAction action) {
+		if (input == null)
+			return input;
+		if (action.equals(AttrNewLineAction.HTML))
 			return input.replace("\n", "<br />");
+		else if (action.equals(AttrNewLineAction.SPACE))
+			return input.replace("\n", " ");
+		else if (action.equals(AttrNewLineAction.DISCARD))
+			return input.replace("\n", "");
 		else
 			return input;
 	}
@@ -143,7 +176,7 @@ public class FormattedTextCompiler {
 		}
 	}
 	
-	private static String processLink(Command cmd) {
+	private static String processLink(Command cmd, boolean discard) {
 		String title = "";
 		String uri = "#";
 		boolean external = false;
@@ -154,12 +187,17 @@ public class FormattedTextCompiler {
 			argsIdx++;
 		}
 		if (args.length > argsIdx) {
-			uri = args[argsIdx++];
-		}
-		if (args.length > argsIdx) {
 			title = args[argsIdx++];
 		}
-		return buildLinkHtml(uri, title, external);
+		if (args.length > argsIdx) {
+			uri = title;
+			title = args[argsIdx++];
+		}
+		if (discard) {
+			return title;
+		} else {
+			return buildLinkHtml(uri, title, external);
+		}
 	}
 	
 	private static String buildLinkHtml(String uri, String title, boolean external) {
@@ -181,14 +219,18 @@ public class FormattedTextCompiler {
 		return sb.toString();
 	}
 	
-	private static String processBold(Command cmd) {
+	private static String processBold(Command cmd, boolean discard) {
 		String[] args = cmd.getArguments();
 		StringBuffer sb = new StringBuffer();
-		sb.append("<strong>");
+		if (!discard) {
+			sb.append("<strong>");
+		}
 		if (args.length >= 1) {
 			sb.append(args[0]);
 		}
-		sb.append("</strong>");
+		if (!discard) {
+			sb.append("</strong>");
+		}
 		return sb.toString();
 	}
 	
