@@ -62,6 +62,10 @@ public class FormattedTextCompiler {
 		put(Attribute.CONVERT_NEWLINE, AttrNewLineAction.HTML);
 	}};
 	
+	public static final AttributeMap CONVERT_NEWLINE = new AttributeMap(){{
+		put(Attribute.CONVERT_NEWLINE, AttrNewLineAction.HTML);
+	}};
+	
 	public static final AttributeMap DISCARD_ALL = new AttributeMap(){{
 		put(Attribute.PROCESS_COMMANDS, AttrCommandAction.DISCARD);
 		put(Attribute.CONVERT_NEWLINE, AttrNewLineAction.DISCARD);
