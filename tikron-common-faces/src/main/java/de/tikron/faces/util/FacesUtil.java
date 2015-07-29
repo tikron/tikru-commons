@@ -45,5 +45,22 @@ public class FacesUtil {
 		}
 		return null;
 	}
+	
+	/**
+	 * Returns the server URI of the current request.
+	 * 
+	 * @return The URI or null, if no URI can be constucted.
+	 */
+	public static URI getServerURI() {
+		try {
+			// The external context (Servlet or Portlet)
+			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+			// Construct URI
+			return new URI(externalContext.getRequestScheme(), externalContext.getRequestServerName(), null, null);
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }
