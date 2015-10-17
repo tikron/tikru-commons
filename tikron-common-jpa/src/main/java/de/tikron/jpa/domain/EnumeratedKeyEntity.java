@@ -73,33 +73,33 @@ public abstract class EnumeratedKeyEntity<ID extends Serializable> implements En
 		return this.createdOn;
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Checks whether the given entity is equal to this entity. The two entities are equal, if the given entity is an
+	 * instance of type EnumeratedKeyEntity<ID> and the IDs of both entities are equal.
 	 * 
-	 * @see java.lang.Object#equals()
+	 * @param other The {@link EnumeratedKeyEntity<ID>} to compare with this entity.
+	 * @return true, if the given entity is equal to this entity.
 	 */
 	@Override
-	@SuppressWarnings("unchecked")
 	public boolean equals(Object other) {
-		return other instanceof EnumeratedKeyEntity && (id != null) ? id.equals(((EnumeratedKeyEntity<ID>) other).id)
-				: (other == this);
+		if (other instanceof EnumeratedKeyEntity<?>) {
+			if (((EnumeratedKeyEntity<?>) other).id.equals(this.id)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Returns a hash code for this {@link EnumeratedKeyEntity<ID>}.
 	 * 
-	 * @see java.lang.Object#hashCode()
+	 * @return The hash code.
 	 */
 	@Override
 	public int hashCode() {
 		return id != null ? this.getClass().hashCode() + id.hashCode() : super.hashCode();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return new ToStringBuilder(this).append("id", id).toString();

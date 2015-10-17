@@ -20,12 +20,12 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * @author Titus Kruse
  */
 @MappedSuperclass
-public abstract class GeneratedKeyEntity implements Entity<Long>, Versioned, Historical {
+public abstract class GeneratedKeyEntity<ID extends Number> implements Entity<ID>, Versioned, Historical {
 
 	@Id
 	@Column
 	@GeneratedValue
-	protected Long id;
+	protected ID id;
 
 	@Column
 	@Version
@@ -43,14 +43,14 @@ public abstract class GeneratedKeyEntity implements Entity<Long>, Versioned, His
 	 * 
 	 * @param e The GeneratedKeyEntity to copy from.
 	 */
-	protected GeneratedKeyEntity(GeneratedKeyEntity e) {
+	protected GeneratedKeyEntity(GeneratedKeyEntity<ID> e) {
 		this.id = e.id;
 		this.version = e.version;
 		this.createdOn = e.createdOn;
 	}
 
 	@Override
-	public Long getId() {
+	public ID getId() {
 		return this.id;
 	}
 
@@ -64,32 +64,33 @@ public abstract class GeneratedKeyEntity implements Entity<Long>, Versioned, His
 		return this.createdOn;
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Checks whether the given entity is equal to this entity. The two entities are equal, if the given entity is an
+	 * instance of type GeneratedKeyEntity<ID> and the IDs of both entities are equal.
 	 * 
-	 * @see java.lang.Object#equals()
+	 * @param other The {@link GeneratedKeyEntity<ID>} to compare with this entity.
+	 * @return true, if the given entity is equal to this entity.
 	 */
 	@Override
 	public boolean equals(Object other) {
-		return other instanceof GeneratedKeyEntity && (id != null) ? id.equals(((GeneratedKeyEntity) other).id)
-				: (other == this);
+		if (other instanceof GeneratedKeyEntity<?>) {
+			if (((GeneratedKeyEntity<?>) other).id.equals(this.id)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Returns a hash code for this {@link GeneratedKeyEntity<ID>}.
 	 * 
-	 * @see java.lang.Object#hashCode()
+	 * @return The hash code.
 	 */
 	@Override
 	public int hashCode() {
 		return id != null ? this.getClass().hashCode() + id.hashCode() : super.hashCode();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return new ToStringBuilder(this).append("id", id).toString();
