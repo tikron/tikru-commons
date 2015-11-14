@@ -73,12 +73,11 @@ public abstract class GeneratedKeyEntity<ID extends Number> implements Entity<ID
 	 */
 	@Override
 	public boolean equals(Object other) {
-		if (other instanceof GeneratedKeyEntity<?>) {
-			if (((GeneratedKeyEntity<?>) other).id.equals(this.id)) {
-				return true;
-			}
+		if (other instanceof GeneratedKeyEntity<?> && (id != null)) {
+			return id.equals(((GeneratedKeyEntity<?>) other).id);
+		} else {
+			return other == this;
 		}
-		return false;
 	}
 
 	/**
