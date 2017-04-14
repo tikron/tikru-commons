@@ -32,9 +32,12 @@ public class JpaUtil {
 	/**
 	 * Initializes an entity.
 	 * 
+	 * @deprecated PersistenceUnitUtil.getIdentifier() does not always initialize the entity. 
+	 * 
 	 * @param em The entity manager to use.
 	 * @param entity The entity to initialize. Null will be ignored.
 	 */
+	@Deprecated
 	public static void initialize(EntityManager em, Object entity) {
 		if (entity != null) {
 			em.getEntityManagerFactory().getPersistenceUnitUtil().getIdentifier(entity);
@@ -44,9 +47,12 @@ public class JpaUtil {
 	/**
 	 * Initializes a collection.
 	 * 
+	 * @deprecated PersistenceUnitUtil.getIdentifier() does not always initialize the entity. 
+	 * 
 	 * @param em The entity manager to use.
 	 * @param collection A collection of entities. Null will be ignored.
 	 */
+	@Deprecated
 	public static void initialize(EntityManager em, Collection<?> collection) {
 		if (collection != null) {
 			for (Object entity : collection) {
