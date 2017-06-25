@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -32,6 +34,7 @@ public abstract class GeneratedKeyEntity<ID extends Number> implements Entity<ID
 	protected Integer version;
 
 	@Column(name = "created_on")
+	@Temporal(TemporalType.TIMESTAMP)
 	protected Date createdOn;
 
 	public GeneratedKeyEntity() {
