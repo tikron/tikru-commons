@@ -3,14 +3,12 @@
  */
 package de.tikron.jpa.domain;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -34,11 +32,10 @@ public abstract class GeneratedKeyEntity<ID extends Number> implements Entity<ID
 	protected Integer version;
 
 	@Column(name = "created_on")
-	@Temporal(TemporalType.TIMESTAMP)
-	protected Date createdOn;
+	protected LocalDateTime createdOn;
 
 	public GeneratedKeyEntity() {
-		this.createdOn = new Date();
+		this.createdOn = LocalDateTime.now();
 	}
 	
 	/**
@@ -63,7 +60,7 @@ public abstract class GeneratedKeyEntity<ID extends Number> implements Entity<ID
 	}
 
 	@Override
-	public Date getCreatedOn() {
+	public LocalDateTime getCreatedOn() {
 		return this.createdOn;
 	}
 

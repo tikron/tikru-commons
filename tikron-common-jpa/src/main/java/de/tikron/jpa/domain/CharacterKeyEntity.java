@@ -3,7 +3,7 @@
  */
 package de.tikron.jpa.domain;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -30,7 +30,7 @@ public abstract class CharacterKeyEntity implements Entity<String>, Versioned, H
 	protected Integer version;
 
 	@Column(name = "created_on")
-	protected Date createdOn;
+	protected LocalDateTime createdOn;
 
 	// Required for Hibernate
 	public CharacterKeyEntity() {
@@ -38,7 +38,7 @@ public abstract class CharacterKeyEntity implements Entity<String>, Versioned, H
 
 	public CharacterKeyEntity(String id) {
 		this.id = id;
-		this.createdOn = new Date();
+		this.createdOn = LocalDateTime.now();
 	}
 	
 	/**
@@ -63,7 +63,7 @@ public abstract class CharacterKeyEntity implements Entity<String>, Versioned, H
 	}
 
 	@Override
-	public Date getCreatedOn() {
+	public LocalDateTime getCreatedOn() {
 		return this.createdOn;
 	}
 

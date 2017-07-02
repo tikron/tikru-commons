@@ -3,7 +3,7 @@
  */
 package de.tikron.jpa.domain;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * Declares a persistent object as historical. The object has a timestamp created.
@@ -13,6 +13,6 @@ import java.util.Date;
  */
 public interface Historical {
 	
-	public Date getCreatedOn();
+	public LocalDateTime getCreatedOn();
 
 }

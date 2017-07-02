@@ -4,7 +4,7 @@
 package de.tikron.jpa.domain;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.EnumType;
@@ -36,7 +36,7 @@ public abstract class EnumeratedKeyEntity<ID extends Serializable> implements En
 	protected Integer version;
 
 	@Column(name = "created_on")
-	protected Date createdOn;
+	protected LocalDateTime createdOn;
 
 	// Required for Hibernate
 	public EnumeratedKeyEntity() {
@@ -44,7 +44,7 @@ public abstract class EnumeratedKeyEntity<ID extends Serializable> implements En
 
 	public EnumeratedKeyEntity(ID id) {
 		this.id = id;
-		this.createdOn = new Date();
+		this.createdOn = LocalDateTime.now();
 	}
 	
 	/**
@@ -69,7 +69,7 @@ public abstract class EnumeratedKeyEntity<ID extends Serializable> implements En
 	}
 
 	@Override
-	public Date getCreatedOn() {
+	public LocalDateTime getCreatedOn() {
 		return this.createdOn;
 	}
 
