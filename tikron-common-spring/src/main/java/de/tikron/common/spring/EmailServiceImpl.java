@@ -25,40 +25,18 @@ public class EmailServiceImpl implements EmailService {
 
 	private String recipient;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.freakworm.common.service.EmailService#sendEmail(java.lang.String, java.lang.String)
-	 */
 	public boolean sendEmail(String subject, String content) {
 		return sendEmail(null, subject, content);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.freakworm.common.service.EmailService#sendEmail(java.lang.String, java.lang.String, java.lang.String)
-	 */
 	public boolean sendEmail(String recipient, String subject, String content) {
 		return sendEmail(null, recipient, subject, content);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.freakworm.common.service.EmailService#sendEmail(java.lang.String, java.lang.String, java.lang.String,
-	 * java.lang.String)
-	 */
 	public boolean sendEmail(String sender, String recipient, String subject, String content) {
 		return sendEmail(sender, null, recipient, subject, content);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.freakworm.common.service.EmailService#sendEmail(java.lang.String, java.lang.String, java.lang.String,
-	 * java.lang.String)
-	 */
 	public boolean sendEmail(String sender, String senderName, String recipient, String subject, String content) {
 		try {
 			if (enabled) {
