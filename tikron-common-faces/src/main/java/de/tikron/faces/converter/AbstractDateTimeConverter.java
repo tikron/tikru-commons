@@ -140,9 +140,9 @@ public abstract class AbstractDateTimeConverter implements Converter {
 		if (pattern != null) {
 			return DateTimeFormatter.ofPattern(pattern, getLocale(context, component));
 		} else if (zoneId != null){
-			return DateTimeFormatter.ofLocalizedTime(getDateStyle(component)).withLocale(getLocale(context, component)).withZone(zoneId);
+			return DateTimeFormatter.ofLocalizedTime(getTimeStyle(component)).withLocale(getLocale(context, component)).withZone(zoneId);
 		} else {
-			return DateTimeFormatter.ofLocalizedTime(getDateStyle(component)).withLocale(getLocale(context, component));
+			return DateTimeFormatter.ofLocalizedTime(getTimeStyle(component)).withLocale(getLocale(context, component));
 		}
 	}
 
