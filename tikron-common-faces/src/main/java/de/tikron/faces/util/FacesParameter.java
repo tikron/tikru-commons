@@ -7,7 +7,7 @@ import java.text.MessageFormat;
 
 import javax.faces.context.FacesContext;
 
-import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang3.ObjectUtils;
 
 /**
  * Stellt Methoden bereit, die das Übertragen von Parametern zwischen Faces-Beans erleichtern. Die Methoden teilen sich
