@@ -3,11 +3,18 @@
  */
 package de.tikron.common.spring;
 
+import java.io.UnsupportedEncodingException;
+import java.util.Objects;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.mail.MailException;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 
 /**
  * Stellt Funktionen zum Versenden von E-Mails bereit (Standardimplementierung).
@@ -18,52 +25,54 @@ import org.springframework.mail.javamail.JavaMailSender;
 public class EmailServiceImpl implements EmailService {
 
 	private JavaMailSender mailSender;
-	
+
 	private boolean enabled;
 
-	private String sender;
+	private String senderEmail;
 
-	private String recipient;
+	private String recipientEmail;
 
 	public boolean sendEmail(String subject, String content) {
 		return sendEmail(null, subject, content);
 	}
 
-	public boolean sendEmail(String recipient, String subject, String content) {
-		return sendEmail(null, recipient, subject, content);
+	public boolean sendEmail(String recipientEmail, String subject, String content) {
+		return sendEmail(null, recipientEmail, subject, content);
 	}
 
-	public boolean sendEmail(String sender, String recipient, String subject, String content) {
-		return sendEmail(sender, null, recipient, subject, content);
+	public boolean sendEmail(String senderEmail, String recipientEmail, String subject, String content) {
+		return sendEmail(senderEmail, null, recipientEmail, subject, content);
 	}
 
-	public boolean sendEmail(String sender, String senderName, String recipient, String subject, String content) {
+	public boolean sendEmail(String senderEmail, String senderName, String recipientEmail, String subject, String content) {
+		Objects.requireNonNull(subject, "Missing parameter subject");
+		Objects.requireNonNull(content, "Missing parameter content");
 		try {
 			if (enabled) {
-				SimpleMailMessage message = new SimpleMailMessage();
-				// Set sender address and name
-				if (senderName != null)
-					message.setFrom(senderName);
-				else if (sender != null)
-					message.setFrom(sender);
-				else
-					message.setFrom(this.sender);
-				// Set recipient
-				if (recipient != null)
-					message.setTo(recipient);
-				else
-					message.setTo(this.recipient);
-				// Set subject
-				if (subject != null)
-					message.setSubject(subject);
-				else
-					throw new IllegalArgumentException("Missing parameter subject");
-				// Set message text
-				if (content != null)
-					message.setText(content);
-				else
-					throw new IllegalArgumentException("Missing parameter content");
-				mailSender.send(message);
+				MimeMessagePreparator mailMessage = new MimeMessagePreparator() {
+				   public void prepare(MimeMessage mimeMessage) throws MessagingException, UnsupportedEncodingException {
+				     MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+				     // Sender sender
+				     if (senderEmail != null && senderName != null) {
+				    	 message.setFrom(senderEmail, senderName);
+				     } else if (senderEmail != null) {
+				    	 message.setFrom(senderEmail);
+				     } else {
+				    	 message.setFrom(getSenderMail());
+				     }
+				     // Set recipient
+				     if (recipientEmail != null) {
+					     message.setTo(recipientEmail);
+				     } else {
+					     message.setTo(getRecipientEmail());
+				     }
+						// Set subject
+						message.setSubject(subject);
+						// Set message text
+						message.setText(content);
+				   }
+				};
+	      mailSender.send(mailMessage);
 			}
 		} catch (MailException e) {
 			e.printStackTrace();
@@ -81,22 +90,22 @@ public class EmailServiceImpl implements EmailService {
 		this.enabled = enabled;
 	}
 
-	public String getSender() {
-		return sender;
+	public String getSenderMail() {
+		return senderEmail;
 	}
 
 	@Required
-	public void setSender(String sender) {
-		this.sender = sender;
+	public void setSenderEmail(String senderEmail) {
+		this.senderEmail = senderEmail;
 	}
 
-	public String getRecipient() {
-		return recipient;
+	public String getRecipientEmail() {
+		return recipientEmail;
 	}
 
 	@Required
-	public void setRecipient(String recipient) {
-		this.recipient = recipient;
+	public void setRecipientEmail(String recipientEmail) {
+		this.recipientEmail = recipientEmail;
 	}
 
 }

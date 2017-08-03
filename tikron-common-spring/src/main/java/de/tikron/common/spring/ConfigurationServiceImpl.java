@@ -25,7 +25,7 @@ import org.springframework.web.context.ServletContextAware;
  */
 public class ConfigurationServiceImpl implements ConfigurationService, ServletContextAware {
 
-	private static Logger LOGGER = LogManager.getLogger(ConfigurationServiceImpl.class);
+	private static Logger LOGGER = LogManager.getLogger();
 
 	private ServletContext servletContext;
 

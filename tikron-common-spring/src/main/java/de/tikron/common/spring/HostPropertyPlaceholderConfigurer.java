@@ -23,7 +23,7 @@ import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
  */
 public class HostPropertyPlaceholderConfigurer extends PropertyPlaceholderConfigurer {
 
-	private static Logger LOGGER = LogManager.getLogger(HostPropertyPlaceholderConfigurer.class);
+	private static Logger LOGGER = LogManager.getLogger();
 
 	private static String hostname;
 

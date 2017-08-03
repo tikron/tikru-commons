@@ -23,48 +23,48 @@ public interface EmailService {
 	/**
 	 * Sendet eine E-Mail. Die E-Mail wird vom Webmaster an den übergeben Empfänger gesendet.
 	 * 
-	 * @param recipient Die E-Mail-Adresse des Empängers.
+	 * @param recipientEmail Die E-Mail-Adresse des Empängers.
 	 * @param subject Der "Betreff" der E-Mail.
 	 * @param content Der Nachrichtentext.
 	 * @return true, falls das Senden erfolgreich war. Andernfalls false.
 	 */
-	public boolean sendEmail(String recipient, String subject, String content);
+	public boolean sendEmail(String recipientEmail, String subject, String content);
 
 	/**
 	 * Sendet eine E-Mail. Die E-Mail wird vom übergebenen Absender an den übergeben Empfänger gesendet.
 	 * 
-	 * @param sender Die E-Mail-Adresse des Absenders.
-	 * @param recipient Die E-Mail-Adresse des Empängers.
+	 * @param senderEmail Die E-Mail-Adresse des Absenders.
+	 * @param recipientEmail Die E-Mail-Adresse des Empängers.
 	 * @param subject Der "Betreff" der E-Mail.
 	 * @param content Der Nachrichtentext.
 	 * @return true, falls das Senden erfolgreich war. Andernfalls false.
 	 */
-	public boolean sendEmail(String sender, String recipient, String subject, String content);
+	public boolean sendEmail(String senderEmail, String recipientEmail, String subject, String content);
 
 	/**
 	 * Sendet eine E-Mail. Die E-Mail wird vom übergebenen Absender an den übergeben Empfänger gesendet.
 	 * 
-	 * @param sender Die E-Mail-Adresse des Absenders oder null, falls der Standardabsender verwendet werden soll.
+	 * @param senderEmail Die E-Mail-Adresse des Absenders oder null, falls der Standardabsender verwendet werden soll.
 	 * @param senderName Der Name des Absenders, oder null, falls kein Name hinzugefügt werden soll.
-	 * @param recipient Die E-Mail-Adresse des Empängers, oder null, falls der Standardempfänger verwendet werden soll.
+	 * @param recipientEmail Die E-Mail-Adresse des Empängers, oder null, falls der Standardempfänger verwendet werden soll.
 	 * @param subject Der "Betreff" der E-Mail.
 	 * @param content Der Nachrichtentext.
 	 * @return true, falls das Senden erfolgreich war. Andernfalls false.
 	 */
-	public boolean sendEmail(String sender, String senderName, String recipient, String subject, String content);
+	public boolean sendEmail(String senderEmail, String senderName, String recipientEmail, String subject, String content);
 
 	/**
 	 * Liefert die E-Mail-Adresse des Standardabsenders.
 	 * 
 	 * @return Die E-Mail-Adresse des Standardabsenders.
 	 */
-	public String getSender();
+	public String getSenderMail();
 
 	/**
 	 * Liefert die E-Mail-Adresse des Standardempfängers.
 	 * 
 	 * @return Die E-Mail-Adresse des Standardempfängers.
 	 */
-	public String getRecipient();
+	public String getRecipientEmail();
 
 }
