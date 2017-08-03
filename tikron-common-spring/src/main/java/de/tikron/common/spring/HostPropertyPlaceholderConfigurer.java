@@ -4,7 +4,8 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 
 /**
@@ -22,7 +23,7 @@ import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
  */
 public class HostPropertyPlaceholderConfigurer extends PropertyPlaceholderConfigurer {
 
-	private static Logger LOGGER = Logger.getLogger(HostPropertyPlaceholderConfigurer.class);
+	private static Logger LOGGER = LogManager.getLogger(HostPropertyPlaceholderConfigurer.class);
 
 	private static String hostname;
 
