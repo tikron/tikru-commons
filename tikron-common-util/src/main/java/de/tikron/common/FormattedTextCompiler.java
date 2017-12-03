@@ -27,7 +27,7 @@ public class FormattedTextCompiler {
 	
 	private static final FormattedTextCompiler INSTANCE = new FormattedTextCompiler(); 
 
-	private static final Pattern COMMAND_PATTERN = Pattern.compile("\\[([^\\]]*)\\]");
+	private static final Pattern commandPattern = Pattern.compile("\\[([^\\]]*)\\]");
 	
 	private static final String COMMAND_LINK = "a";
 	
@@ -101,7 +101,7 @@ public class FormattedTextCompiler {
 		// Process commands
 		AttrCommandAction commandAction = (AttrCommandAction) attributes.get(Attribute.PROCESS_COMMANDS);
 	  if (AttrCommandAction.HTML.equals(commandAction) || AttrCommandAction.DISCARD.equals(commandAction)) {
-		  Matcher m = COMMAND_PATTERN.matcher(input);
+		  Matcher m = commandPattern.matcher(input);
 		  StringBuffer sb = new StringBuffer(input.length());
 		  while (m.find()) {
 				String commandLine = m.group(1);

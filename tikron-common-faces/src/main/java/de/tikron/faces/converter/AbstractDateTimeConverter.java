@@ -4,7 +4,6 @@
 package de.tikron.faces.converter;
 
 import java.time.ZoneId;
-import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Locale;
@@ -23,9 +22,6 @@ import javax.faces.convert.Converter;
  * @author Titus Kruse
  */
 public abstract class AbstractDateTimeConverter implements Converter {
-	
-	// Zone Offset of internal application times. Should by UTC, but currently no need to use it.
-	protected static final ZoneOffset INTERNAL_ZONE_OFFSET = ZoneOffset.of("+02");
 
 	/**
 	 * Returns the faces component formatting pattern attribute value.

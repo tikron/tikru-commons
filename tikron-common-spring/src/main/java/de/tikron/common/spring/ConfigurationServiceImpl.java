@@ -25,7 +25,7 @@ import org.springframework.web.context.ServletContextAware;
  */
 public class ConfigurationServiceImpl implements ConfigurationService, ServletContextAware {
 
-	private static Logger LOGGER = LogManager.getLogger();
+	private static Logger logger = LogManager.getLogger();
 
 	private ServletContext servletContext;
 
@@ -48,7 +48,7 @@ public class ConfigurationServiceImpl implements ConfigurationService, ServletCo
 				properties = new Properties();
 				is = ConfigurationServiceImpl.class.getClassLoader().getResourceAsStream(configurationFileName);
 				if (is != null) {
-					LOGGER.info(String.format("Loading configuration from file '%s'.", configurationFileName));
+					logger.info(String.format("Loading configuration from file '%s'.", configurationFileName));
 					properties.loadFromXML(is);
 				} else {
 					throw new ConfigurationException("Configuration file not found: " + configurationFileName);
