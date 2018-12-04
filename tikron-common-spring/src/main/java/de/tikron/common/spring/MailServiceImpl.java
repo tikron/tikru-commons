@@ -9,7 +9,6 @@ import java.util.Objects;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -22,7 +21,7 @@ import org.springframework.mail.javamail.MimeMessagePreparator;
  * @date 23.12.2009
  * @author Titus Kruse
  */
-public class EmailServiceImpl implements EmailService {
+public class MailServiceImpl implements MailService {
 
 	private JavaMailSender mailSender;
 
@@ -32,19 +31,19 @@ public class EmailServiceImpl implements EmailService {
 
 	private String recipientEmail;
 
-	public boolean sendEmail(String subject, String content) {
-		return sendEmail(null, subject, content);
+	public boolean send(String subject, String content) {
+		return send(null, subject, content);
 	}
 
-	public boolean sendEmail(String recipientEmail, String subject, String content) {
-		return sendEmail(null, recipientEmail, subject, content);
+	public boolean send(String recipientEmail, String subject, String content) {
+		return send(null, recipientEmail, subject, content);
 	}
 
-	public boolean sendEmail(String senderEmail, String recipientEmail, String subject, String content) {
-		return sendEmail(senderEmail, null, recipientEmail, subject, content);
+	public boolean send(String senderEmail, String recipientEmail, String subject, String content) {
+		return send(senderEmail, null, recipientEmail, subject, content);
 	}
 
-	public boolean sendEmail(String senderEmail, String senderName, String recipientEmail, String subject, String content) {
+	public boolean send(String senderEmail, String senderName, String recipientEmail, String subject, String content) {
 		Objects.requireNonNull(subject, "Missing parameter subject");
 		Objects.requireNonNull(content, "Missing parameter content");
 		try {
@@ -52,23 +51,23 @@ public class EmailServiceImpl implements EmailService {
 				MimeMessagePreparator mailMessage = new MimeMessagePreparator() {
 				   public void prepare(MimeMessage mimeMessage) throws MessagingException, UnsupportedEncodingException {
 				     MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
-				     // Sender sender
+				     // From
+				     message.setFrom(getSenderMail());
+				     // Reply to
 				     if (senderEmail != null && senderName != null) {
-				    	 message.setFrom(senderEmail, senderName);
+					     message.setReplyTo(senderEmail, senderName);
 				     } else if (senderEmail != null) {
-				    	 message.setFrom(senderEmail);
-				     } else {
-				    	 message.setFrom(getSenderMail());
+					     message.setReplyTo(senderEmail);
 				     }
-				     // Set recipient
+				     // To
 				     if (recipientEmail != null) {
 					     message.setTo(recipientEmail);
 				     } else {
 					     message.setTo(getRecipientEmail());
 				     }
-						// Set subject
+						// Subject
 						message.setSubject(subject);
-						// Set message text
+						// Message body
 						message.setText(content);
 				   }
 				};
@@ -81,7 +80,6 @@ public class EmailServiceImpl implements EmailService {
 		return true;
 	}
 
-	@Autowired
 	public void setMailSender(JavaMailSender mailSender) {
 		this.mailSender = mailSender;
 	}

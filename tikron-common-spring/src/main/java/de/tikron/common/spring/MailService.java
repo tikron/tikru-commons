@@ -9,7 +9,7 @@ package de.tikron.common.spring;
  * @date 23.12.2009
  * @author Titus Kruse
  */
-public interface EmailService {
+public interface MailService {
 
 	/**
 	 * Sendet eine E-Mail. Die E-Mail wird vom Webmaster an den Standardempfänger gesendet.
@@ -18,7 +18,7 @@ public interface EmailService {
 	 * @param content Der Nachrichtentext.
 	 * @return true, falls das Senden erfolgreich war. Andernfalls false.
 	 */
-	public boolean sendEmail(String subject, String content);
+	public boolean send(String subject, String content);
 
 	/**
 	 * Sendet eine E-Mail. Die E-Mail wird vom Webmaster an den übergeben Empfänger gesendet.
@@ -28,7 +28,7 @@ public interface EmailService {
 	 * @param content Der Nachrichtentext.
 	 * @return true, falls das Senden erfolgreich war. Andernfalls false.
 	 */
-	public boolean sendEmail(String recipientEmail, String subject, String content);
+	public boolean send(String recipientEmail, String subject, String content);
 
 	/**
 	 * Sendet eine E-Mail. Die E-Mail wird vom übergebenen Absender an den übergeben Empfänger gesendet.
@@ -39,7 +39,7 @@ public interface EmailService {
 	 * @param content Der Nachrichtentext.
 	 * @return true, falls das Senden erfolgreich war. Andernfalls false.
 	 */
-	public boolean sendEmail(String senderEmail, String recipientEmail, String subject, String content);
+	public boolean send(String senderEmail, String recipientEmail, String subject, String content);
 
 	/**
 	 * Sendet eine E-Mail. Die E-Mail wird vom übergebenen Absender an den übergeben Empfänger gesendet.
@@ -51,7 +51,7 @@ public interface EmailService {
 	 * @param content Der Nachrichtentext.
 	 * @return true, falls das Senden erfolgreich war. Andernfalls false.
 	 */
-	public boolean sendEmail(String senderEmail, String senderName, String recipientEmail, String subject, String content);
+	public boolean send(String senderEmail, String senderName, String recipientEmail, String subject, String content);
 
 	/**
 	 * Liefert die E-Mail-Adresse des Standardabsenders.
