@@ -8,15 +8,15 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 /**
- * Base class for all my messengers
+ * Base class for all my messagers
  *
  * @date 08.05.2019
  * @author Titus Kruse
  */
-public abstract class BaseMessenger implements Messenger {
+public abstract class BaseMessager implements Messager {
 
 	@Override
-	public abstract void notify(String message, String subject) throws MessengerException; 
+	public abstract void notify(String message, String subject) throws MessagerException; 
 
 	/**
 	 * Composes an exception as human readable message. 
@@ -25,7 +25,7 @@ public abstract class BaseMessenger implements Messenger {
 	 * 
 	 * @return The message text.
 	 */
-	public void notify(Throwable t) throws IOException, MessengerException {
+	public void notify(Throwable t) throws IOException, MessagerException {
 		try (StringWriter writer = new StringWriter()) {
 			try (PrintWriter printer = new PrintWriter(writer)) {
 				printer.println("Exception:");

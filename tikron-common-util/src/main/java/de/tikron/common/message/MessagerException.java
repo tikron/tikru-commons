@@ -9,17 +9,17 @@ package de.tikron.common.message;
  * @date 24.06.2015
  * @author Titus Kruse
  */
-public class MessengerException extends RuntimeException {
+public class MessagerException extends RuntimeException {
 
-	public MessengerException() {
+	public MessagerException() {
 		super();
 	}
 
-	public MessengerException(String message) {
+	public MessagerException(String message) {
 		super(message);
 	}
 
-	public MessengerException(Throwable cause) {
+	public MessagerException(Throwable cause) {
 		super(cause);
 	}
 

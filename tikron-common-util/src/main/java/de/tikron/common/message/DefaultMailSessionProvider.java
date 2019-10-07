@@ -8,7 +8,7 @@ import java.util.Properties;
 
 import javax.mail.Session;
 
-import de.tikron.common.config.xml.messenger.PasswordAuthentication;
+import de.tikron.common.config.xml.messager.PasswordAuthentication;
 
 /**
  * 

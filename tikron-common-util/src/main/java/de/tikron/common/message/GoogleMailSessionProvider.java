@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.tikron.common.config.xml.messenger.OAuth2Authentication;
+import de.tikron.common.config.xml.messager.OAuth2Authentication;
 
 /**
  * 

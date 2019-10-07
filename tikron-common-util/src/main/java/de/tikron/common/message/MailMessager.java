@@ -15,29 +15,29 @@ import javax.mail.internet.MimeMessage;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import de.tikron.common.config.xml.messenger.MailMessengerProperties;
-import de.tikron.common.config.xml.messenger.OAuth2Authentication;
-import de.tikron.common.config.xml.messenger.PasswordAuthentication;
+import de.tikron.common.config.xml.messager.MailMessagerProperties;
+import de.tikron.common.config.xml.messager.OAuth2Authentication;
+import de.tikron.common.config.xml.messager.PasswordAuthentication;
 
 /**
- * A {@link Messenger} sending an email.
+ * A {@link Messager} sending an email.
  *
  * @date 24.06.2015
  * @author Titus Kruse
  */
-public class MailMessenger extends BaseMessenger {
+public class MailMessager extends BaseMessager {
 	
-	private final MailMessengerProperties properties;
+	private final MailMessagerProperties properties;
 	
 	private final Path workDirectory; 
 	
-	public MailMessenger(MailMessengerProperties properties, Path workDirectory) {
+	public MailMessager(MailMessagerProperties properties, Path workDirectory) {
 		this.properties = properties;
 		this.workDirectory = workDirectory;
 	}
 
 	@Override
-	public void notify(String message, String subject) throws MessengerException {
+	public void notify(String message, String subject) throws MessagerException {
 		try {
 			Session session;
 			if (properties.getAuthentication() instanceof PasswordAuthentication) {
@@ -61,13 +61,13 @@ public class MailMessenger extends BaseMessenger {
 			Transport.send(msg);
 			
 		} catch (MessagingException e) {
-			throw new MessengerException(e);
+			throw new MessagerException(e);
 		} catch (IOException e) {
-			throw new MessengerException(e);
+			throw new MessagerException(e);
 		}
 	}
 
-	public MailMessengerProperties getProperties() {
+	public MailMessagerProperties getProperties() {
 		return properties;
 	}
 

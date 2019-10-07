@@ -1,4 +1,4 @@
-package de.tikron.common.config.xml.messenger;
+package de.tikron.common.config.xml.messager;
 
 import javax.mail.internet.InternetAddress;
 import javax.xml.bind.annotation.XmlElement;
@@ -16,7 +16,7 @@ import de.tikron.common.config.xml.BaseElement;
  * @date 08.08.2011
  * @author Titus Kruse
  */
-public class MailMessengerProperties extends BaseElement {
+public class MailMessagerProperties extends BaseElement {
 
 	private String hostname;
 

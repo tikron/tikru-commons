@@ -3,13 +3,13 @@
 	xmlns="http://www.w3.org/2001/XMLSchema"
 	xmlns:msg="http://www.tikron.de/schema/messager">
 	
-	<complexType name="messengerType">
+	<complexType name="messagerType">
 		<choice>
-			<element name="mail" type="msg:mailMessengerType"></element>
+			<element name="mail" type="msg:mailMessagerType"></element>
 		</choice>
 	</complexType>
 
-	<complexType name="mailMessengerType">
+	<complexType name="mailMessagerType">
 		<sequence>
 			<element name="hostname" type="string"></element>
 			<element name="port" type="int"></element>

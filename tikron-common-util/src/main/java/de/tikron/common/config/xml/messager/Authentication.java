@@ -1,4 +1,4 @@
-package de.tikron.common.config.xml.messenger;
+package de.tikron.common.config.xml.messager;
 
 import javax.xml.bind.annotation.XmlSeeAlso;
 

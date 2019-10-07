@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import javax.mail.Session;
 
-import de.tikron.common.config.xml.messenger.Authentication;
+import de.tikron.common.config.xml.messager.Authentication;
 
 /**
  * 
