@@ -10,8 +10,10 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import de.tikron.common.config.xml.messenger.MailMessengerProperties;
 import de.tikron.common.config.xml.messenger.OAuth2Authentication;
@@ -51,9 +53,9 @@ public class MailMessenger extends BaseMessenger {
 				session.setDebug(true);
 			}
 			Message msg = new MimeMessage(session);
-			msg.setFrom(new InternetAddress(properties.getFrom(), "Polly"));
-			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(properties.getTo()));
-			msg.setSubject(String.format("[Polly] %s", subject));
+			msg.setFrom(properties.getFrom());
+			msg.setRecipient(Message.RecipientType.TO, properties.getTo());
+			msg.setSubject(subject);
 			msg.setText(message);
 
 			Transport.send(msg);
@@ -67,5 +69,10 @@ public class MailMessenger extends BaseMessenger {
 
 	public MailMessengerProperties getProperties() {
 		return properties;
+	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).append("host", properties.getHostname()).append("to", properties.getTo()).build();
 	}
 }

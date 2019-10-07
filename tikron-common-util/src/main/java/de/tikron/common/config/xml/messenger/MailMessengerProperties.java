@@ -1,5 +1,6 @@
 package de.tikron.common.config.xml.messenger;
 
+import javax.mail.internet.InternetAddress;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElements;
 
@@ -29,9 +30,9 @@ public class MailMessengerProperties extends BaseElement {
 	
 	private boolean debug;
 
-	private String from;
+	private InternetAddress from;
 
-	private String to;
+	private InternetAddress to;
 
 	public String getHostname() {
 		return hostname;
@@ -65,19 +66,19 @@ public class MailMessengerProperties extends BaseElement {
 		this.authentication = authentication;
 	}
 
-	public String getFrom() {
+	public InternetAddress getFrom() {
 		return from;
 	}
 
-	public void setFrom(String from) {
+	public void setFrom(InternetAddress from) {
 		this.from = from;
 	}
 
-	public String getTo() {
+	public InternetAddress getTo() {
 		return to;
 	}
 
-	public void setTo(String to) {
+	public void setTo(InternetAddress to) {
 		this.to = to;
 	}
 }
