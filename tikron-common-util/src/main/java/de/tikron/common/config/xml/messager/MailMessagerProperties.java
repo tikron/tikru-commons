@@ -4,6 +4,9 @@ import javax.mail.internet.InternetAddress;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElements;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import de.tikron.common.config.xml.BaseElement;
 
 /**
@@ -21,13 +24,11 @@ public class MailMessagerProperties extends BaseElement {
 	private String hostname;
 
 	private int port;
-	
-	@XmlElements({
-		@XmlElement(name = "passwordAuth", type = PasswordAuthentication.class), 
-		@XmlElement(name = "oauth2", type = OAuth2Authentication.class)
-	})
+
+	@XmlElements({ @XmlElement(name = "passwordAuth", type = PasswordAuthentication.class),
+			@XmlElement(name = "oauth2", type = OAuth2Authentication.class) })
 	private Authentication authentication;
-	
+
 	private boolean debug;
 
 	private InternetAddress from;
@@ -80,5 +81,11 @@ public class MailMessagerProperties extends BaseElement {
 
 	public void setTo(InternetAddress to) {
 		this.to = to;
+	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).append("hostname", hostname).append("port", port)
+				.append("authentication", authentication).append("from", from).append("to", to).build();
 	}
 }

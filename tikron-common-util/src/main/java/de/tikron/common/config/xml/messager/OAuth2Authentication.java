@@ -2,6 +2,9 @@ package de.tikron.common.config.xml.messager;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 /**
  * Copyright (c) 2019 by Titus Kruse.
  */
@@ -53,5 +56,10 @@ public class OAuth2Authentication extends Authentication {
 
 	public void setRefreshToken(String refreshToken) {
 		this.refreshToken = refreshToken;
+	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).append("username", username).append("clientId", clientId).build();
 	}
 }
