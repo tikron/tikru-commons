@@ -1,20 +1,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.tikron.common</groupId>
-	<artifactId>tikron-common</artifactId>
+	<groupId>de.tikru.commons</groupId>
+	<artifactId>tikru-commons</artifactId>
 	<packaging>pom</packaging>
 	<name>Tikron Commons</name>
 	<parent>
-		<groupId>de.tikron</groupId>
-		<artifactId>tikron</artifactId>
+		<groupId>de.tikru</groupId>
+		<artifactId>tikru</artifactId>
 		<version>1.0.1-SNAPSHOT</version>
-		<relativePath>../../tikron/tikron</relativePath>
+		<relativePath>../../tikru/tikru</relativePath>
 	</parent>
 	<modules>
-		<module>../tikron-common-util</module>
-		<module>../tikron-common-faces</module>
-		<module>../tikron-common-jpa</module>
-		<module>../tikron-common-spring</module>
+		<module>../tikru-commons-faces</module>
+		<module>../tikru-commons-jpa</module>
+		<module>../tikru-commons-spring</module>
+		<module>../tikru-commons-util</module>
 	</modules>
 </project>
