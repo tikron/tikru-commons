@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>tikru-commons-util</artifactId>
-	<name>Tikron Common Utilities</name>
+	<name>Tikru Common Utilities</name>
 	<parent>
 		<groupId>de.tikru.commons</groupId>
 		<artifactId>tikru-commons</artifactId>
@@ -26,7 +26,8 @@
 		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
-			<version>1.6.2</version>
+			<version>${mail.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>

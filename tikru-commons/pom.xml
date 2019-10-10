@@ -4,7 +4,7 @@
 	<groupId>de.tikru.commons</groupId>
 	<artifactId>tikru-commons</artifactId>
 	<packaging>pom</packaging>
-	<name>Tikron Commons</name>
+	<name>Tikru Commons</name>
 	<parent>
 		<groupId>de.tikru</groupId>
 		<artifactId>tikru</artifactId>
