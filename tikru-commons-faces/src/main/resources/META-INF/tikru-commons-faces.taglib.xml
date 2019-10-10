@@ -3,7 +3,7 @@
 		xmlns="http://java.sun.com/xml/ns/javaee"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd">
-	<namespace>http://tikron.de/tikron-common-faces</namespace>
+	<namespace>http://tikron.de/tikru-commons-faces</namespace>
 	<tag>
 		<tag-name>outputDelimited</tag-name>
 		<component>

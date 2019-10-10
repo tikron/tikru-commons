@@ -11,6 +11,8 @@ package de.tikru.commons.util.message;
  */
 public class MessagerException extends RuntimeException {
 
+	private static final long serialVersionUID = -2110742001498758149L;
+
 	public MessagerException() {
 		super();
 	}

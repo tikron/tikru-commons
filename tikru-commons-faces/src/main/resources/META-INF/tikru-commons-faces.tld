@@ -6,12 +6,12 @@
 	<display-name>Tikron JSF-Komponenten Version 2.0</display-name>
 	<tlib-version>2.0</tlib-version>
 	<short-name>tcf</short-name>
-	<uri>http://tikron.de/tikron-common-faces</uri>
+	<uri>http://tikron.de/tikru-commons-faces</uri>
 	<!-- Custom tag "outputDelimited" -->
 	<tag>
 		<description>Gibt Text in der maximal angegebenen Länge aus.</description>
 		<name>outputDelimited</name>
-		<tag-class>de.tikru.common.faces.component.OutputDelimited</tag-class>
+		<tag-class>de.tikru.commons.faces.component.OutputDelimited</tag-class>
 		<body-content>JSP</body-content>
 		<attribute>
 			<name>id</name>
@@ -47,7 +47,7 @@
 	<tag>
 		<description>Ein OutputLabel erweitert um die Möglichkeit, auf ein erforderliches Feld hinzuweisen.</description>
 		<name>outputLabel</name>
-		<tag-class>de.tikru.common.faces.component.OutputLabel</tag-class>
+		<tag-class>de.tikru.commons.faces.component.OutputLabel</tag-class>
 		<body-content>JSP</body-content>
 		<attribute>
 			<description>Id der Komponente, der das Label zugewiesen wird</description>
@@ -97,7 +97,7 @@
 	<tag>
 		<description>Gibt Text mit Berücksichtigung von Zeilenvorschubzeichen aus.</description>
 		<name>outputTextarea</name>
-		<tag-class>de.tikru.common.faces.component.OutputTextarea</tag-class>
+		<tag-class>de.tikru.commons.faces.component.OutputTextarea</tag-class>
 		<body-content>JSP</body-content>
 		<attribute>
 			<name>id</name>

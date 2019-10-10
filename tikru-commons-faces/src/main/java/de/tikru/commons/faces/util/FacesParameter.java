@@ -106,6 +106,8 @@ public class FacesParameter {
 	 */
 	public static class ParameterNotFoundException extends RuntimeException {
 
+		private static final long serialVersionUID = 5883313816669044063L;
+
 		public ParameterNotFoundException() {
 			super();
 		}

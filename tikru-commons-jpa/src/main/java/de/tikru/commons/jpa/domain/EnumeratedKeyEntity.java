@@ -26,6 +26,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 @MappedSuperclass
 public abstract class EnumeratedKeyEntity<ID extends Serializable> implements Entity<ID>, Versioned, Historical {
 
+	private static final long serialVersionUID = -3786289914951551438L;
+
 	@Id
 	@Column(columnDefinition = "char(64)")
 	@Enumerated(EnumType.STRING)

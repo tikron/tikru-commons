@@ -16,7 +16,7 @@ import java.util.Objects;
  * @date 15.07.2015
  * @author Titus Kruse
  */
-//TODO: Should be refactored into multile stream providers
+//TODO Should be refactored into multile stream providers
 public abstract class ConfigurationManager {
 	
 	protected final String name;

@@ -22,6 +22,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 @MappedSuperclass
 public abstract class GeneratedKeyEntity<ID extends Number> implements Entity<ID>, Versioned, Historical {
 
+	private static final long serialVersionUID = -1559298200099559052L;
+
 	@Id
 	@Column
 	@GeneratedValue

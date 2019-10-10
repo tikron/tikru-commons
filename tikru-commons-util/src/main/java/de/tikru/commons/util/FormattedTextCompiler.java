@@ -57,15 +57,18 @@ public class FormattedTextCompiler {
 	 */
 	public static enum AttrNewLineAction {HTML, SPACE, DISCARD, NONE};
 	
+	@SuppressWarnings("serial")
 	public static final AttributeMap DEFAULT_ATTRIBUTES = new AttributeMap(){{
 		put(Attribute.PROCESS_COMMANDS, AttrCommandAction.HTML);
 		put(Attribute.CONVERT_NEWLINE, AttrNewLineAction.HTML);
 	}};
 	
+	@SuppressWarnings("serial")
 	public static final AttributeMap CONVERT_NEWLINE = new AttributeMap(){{
 		put(Attribute.CONVERT_NEWLINE, AttrNewLineAction.HTML);
 	}};
 	
+	@SuppressWarnings("serial")
 	public static final AttributeMap DISCARD_ALL = new AttributeMap(){{
 		put(Attribute.PROCESS_COMMANDS, AttrCommandAction.DISCARD);
 		put(Attribute.CONVERT_NEWLINE, AttrNewLineAction.DISCARD);
@@ -246,6 +249,8 @@ public class FormattedTextCompiler {
 	 */
 	public static class AttributeMap extends HashMap<Attribute, Object> {
 		
+		private static final long serialVersionUID = 3589029962561509102L;
+
 		/**
 		 * Returns an attribute value of type Boolean.
 		 * 

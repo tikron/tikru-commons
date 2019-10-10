@@ -21,6 +21,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 @MappedSuperclass
 public abstract class CharacterKeyEntity implements Entity<String>, Versioned, Historical {
 
+	private static final long serialVersionUID = 3323662471048577644L;
+
 	@Id
 	@Column(columnDefinition = "char(64)")
 	protected String id;

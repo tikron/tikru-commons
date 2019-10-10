@@ -127,6 +127,8 @@ public class ConfigurationServiceImpl implements ConfigurationService, ServletCo
 	 */
 	public static class ConfigurationException extends RuntimeException {
 
+		private static final long serialVersionUID = 3167890693572219743L;
+
 		public ConfigurationException() {
 			super();
 		}
