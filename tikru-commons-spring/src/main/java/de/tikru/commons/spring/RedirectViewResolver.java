@@ -28,11 +28,6 @@ public class RedirectViewResolver implements ViewResolver, Ordered {
 	// Uses this prefix to avoid interference with the default behaviour
 	public static final String REDIRECT_URL_PREFIX = "redirectWithoutModel:";
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.springframework.web.servlet.ViewResolver#resolveViewName(java.lang.String, java.util.Locale)
-	 */
 	@Override
 	public View resolveViewName(String viewName, Locale locale) throws Exception {
 		if (viewName.startsWith(REDIRECT_URL_PREFIX)) {
@@ -42,11 +37,6 @@ public class RedirectViewResolver implements ViewResolver, Ordered {
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.springframework.core.Ordered#getOrder()
-	 */
 	@Override
 	public int getOrder() {
 		return order;

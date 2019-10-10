@@ -33,11 +33,6 @@ public class ConfigurationServiceImpl implements ConfigurationService, ServletCo
 
 	private Properties properties;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.tikru.commons.spring.ConfigurationService#getCfg()
-	 */
 	@Override
 	public Properties getProperties() {
 		if (properties == null) {
@@ -62,11 +57,6 @@ public class ConfigurationServiceImpl implements ConfigurationService, ServletCo
 		return properties;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.tikru.commons.spring.ConfigurationService#getEnvironment()
-	 */
 	@Override
 	public String getEnvironment() {
 		if (environment == null) {
@@ -75,21 +65,11 @@ public class ConfigurationServiceImpl implements ConfigurationService, ServletCo
 		return environment;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.tikru.commons.spring.ConfigurationService#getProperty(java.lang.String)
-	 */
 	@Override
 	public String getProperty(String key) {
 		return getProperties().getProperty(key);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.tikru.commons.spring.ConfigurationService#getProperty(java.lang.String, java.lang.String)
-	 */
 	@Override
 	public String getProperty(String key, String defaultValue) {
 		return getProperties().getProperty(key, defaultValue);
