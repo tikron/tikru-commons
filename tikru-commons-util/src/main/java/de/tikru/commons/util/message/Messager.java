@@ -13,8 +13,8 @@ import java.io.IOException;
  */
 public interface Messager {
 	
-	public void notify(String message, String subject) throws MessagerException;
+	public void notify(String message, String subject) throws MessagingException;
 	
-	public void notify(Throwable t) throws IOException, MessagerException;
+	public void notify(Throwable t) throws IOException, MessagingException;
 
 }

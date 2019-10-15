@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.MimeMessage;
@@ -37,7 +36,7 @@ public class MailMessager extends BaseMessager {
 	}
 
 	@Override
-	public void notify(String message, String subject) throws MessagerException {
+	public void notify(String message, String subject) throws MessagingException {
 		try {
 			Session session;
 			if (properties.getAuthentication() instanceof PasswordAuthentication) {
@@ -60,10 +59,10 @@ public class MailMessager extends BaseMessager {
 
 			Transport.send(msg);
 			
-		} catch (MessagingException e) {
-			throw new MessagerException(e);
+		} catch (javax.mail.MessagingException e) {
+			throw new MessagingException(e);
 		} catch (IOException e) {
-			throw new MessagerException(e);
+			throw new MessagingException(e);
 		}
 	}
 

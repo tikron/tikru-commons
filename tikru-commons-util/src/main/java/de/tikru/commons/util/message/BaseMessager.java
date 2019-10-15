@@ -16,7 +16,7 @@ import java.io.StringWriter;
 public abstract class BaseMessager implements Messager {
 
 	@Override
-	public abstract void notify(String message, String subject) throws MessagerException; 
+	public abstract void notify(String message, String subject) throws MessagingException; 
 
 	/**
 	 * Composes an exception as human readable message. 
@@ -25,7 +25,7 @@ public abstract class BaseMessager implements Messager {
 	 * 
 	 * @return The message text.
 	 */
-	public void notify(Throwable t) throws IOException, MessagerException {
+	public void notify(Throwable t) throws IOException, MessagingException {
 		try (StringWriter writer = new StringWriter()) {
 			try (PrintWriter printer = new PrintWriter(writer)) {
 				printer.println("Exception:");

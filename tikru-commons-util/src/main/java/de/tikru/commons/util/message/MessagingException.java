@@ -9,19 +9,19 @@ package de.tikru.commons.util.message;
  * @date 24.06.2015
  * @author Titus Kruse
  */
-public class MessagerException extends RuntimeException {
+public class MessagingException extends RuntimeException {
 
 	private static final long serialVersionUID = -2110742001498758149L;
 
-	public MessagerException() {
+	public MessagingException() {
 		super();
 	}
 
-	public MessagerException(String message) {
+	public MessagingException(String message) {
 		super(message);
 	}
 
-	public MessagerException(Throwable cause) {
+	public MessagingException(Throwable cause) {
 		super(cause);
 	}
 
