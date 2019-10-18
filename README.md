@@ -1,18 +1,18 @@
 ## Synopsis
 
-This Project is part of my private Website. The web site consists of the site itself, a data management application and an image server.
+This Project is a part of my private Website. The website consists of the site itself, a data management tool and an image server.
 
 ## Technology
 
-I'm using the following application frameworks and technologies in strict MVC pattern: Java Servlet Pages (JSP), Java Server Faces (JSF) and jQuery for presentation layer. Spring Framework with Java 8 for business layer. And Red Hat Hibernate ORM for the Java Persistence API (JPA) persistence layer. The 3 applications are running on a Linux virtual root server with Apache HTTP Server, Tomcat Servlet Container and MySQL Community Edition Database.
+I'm using the following application frameworks and technologies in strict MVC pattern: Java Servlet Pages (JSP), Java Server Faces (JSF) and jQuery for presentation layer. Spring Framework with Java 8 for logic layer. And the Java Persistence API (JPA) implementated by Red Hat Hibernate as persistence layer. The 3 applications are running on a Linux virtual root server with Apache HTTP Server, Tomcat Servlet Container and MySQL Community Edition Database.
 
 ## Motivation
 
-I like to provide contents about my hobbies photography, powerful machines, open air festivals and nature. The main reason starting the web site in the year 2004 was to try out web development technologies. This journey goes over static HTML maintained with Movable Type and Adobe Photoshop web page generator. Content management with Macromedia Dreamweaver. A short approach with Java Applets. And finally dynamic database driven content presentation. Beside my job as web developer I can try out new development technologies and design patterns. 
+I like to publish content about my hobbies photography, camping trips, open air festivals and nature. The main reason starting the website in the year 2004 was to try out web development technologies. This journey began with static HTML/CSS maintained with "Movable Type" and the "Adobe Photoshop" web page generator. After that I used the content management system provided by "Macromedia Dreamweaver". My first contact to Java was "Java Applets", with which I could display simple animations like planets on my website. Since I wanted to present more and more photos, I needed a more flexible technology than templates. So Java Servlets and JDBC came into play. To this day, the platform has remained a playground for me to try out new frameworks and architectural patterns.
 
 ## Installation
 
-The applications program code is divided into 3 main repositories: tikron contains common maven configuration for all projects. tikron-common provides common source code for main applications. And finally tikron-site contains source code for the web site, the management tool and other utilities.  
+The program code of the website is divided into several projects and repositories. This repository contains projects that provide functions shared by the applications. Only the source code is to be made accessible here. Therefore, there are no further installation instructions.
 
 ## License
 
