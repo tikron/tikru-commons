@@ -58,7 +58,7 @@ public interface MailService {
 	 * 
 	 * @return Die E-Mail-Adresse des Standardabsenders.
 	 */
-	public String getSenderMail();
+	public String getSenderEmail();
 
 	/**
 	 * Liefert die E-Mail-Adresse des Standardempfängers.
