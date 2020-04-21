@@ -10,6 +10,9 @@
 	</parent>
 	<artifactId>tikru-commons-util</artifactId>
 	<name>Tikru Common Utilities</name>
+	<properties>
+		<maven.test.skip>false</maven.test.skip>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>

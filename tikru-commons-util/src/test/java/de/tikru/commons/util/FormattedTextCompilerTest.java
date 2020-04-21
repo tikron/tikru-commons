@@ -6,7 +6,6 @@ package de.tikru.commons.util;
 import org.junit.Assert;
 import org.junit.Test;
 
-import de.tikru.commons.util.FormattedTextCompiler;
 import de.tikru.commons.util.FormattedTextCompiler.AttrCommandAction;
 import de.tikru.commons.util.FormattedTextCompiler.AttrNewLineAction;
 import de.tikru.commons.util.FormattedTextCompiler.Attribute;
