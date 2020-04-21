@@ -9,7 +9,6 @@ import java.util.Objects;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -22,13 +21,19 @@ import org.springframework.mail.javamail.MimeMessageHelper;
  */
 public class MailServiceImpl implements MailService {
 
-	private JavaMailSender mailSender;
+	private final JavaMailSender mailSender;
 
+	private final String senderEmail;
+
+	private final String recipientEmail;
+	
 	private boolean enabled;
 
-	private String senderEmail;
-
-	private String recipientEmail;
+	public MailServiceImpl(JavaMailSender mailSender, String senderEmail, String recipientEmail) {
+		this.mailSender = Objects.requireNonNull(mailSender, "Constructor argument mailSender must not be null");
+		this.senderEmail = Objects.requireNonNull(senderEmail, "Constructor argument senderEmail must not be null");
+		this.recipientEmail = Objects.requireNonNull(recipientEmail, "Constructor argument recipientEmail must not be null");
+	}
 
 	public boolean send(String subject, String content) {
 		return send(null, subject, content);
@@ -52,7 +57,7 @@ public class MailServiceImpl implements MailService {
 		     MimeMessageHelper helper = new MimeMessageHelper(message, true);
 		      
 		     // From
-		     helper.setFrom(getSenderMail());
+		     helper.setFrom(getSenderEmail());
 		     // Reply to
 		     if (senderEmail != null && senderName != null) {
 			     helper.setReplyTo(senderEmail, senderName);
@@ -84,30 +89,25 @@ public class MailServiceImpl implements MailService {
 		return true;
 	}
 
-	public void setMailSender(JavaMailSender mailSender) {
-		this.mailSender = mailSender;
+	public boolean isEnabled() {
+		return enabled;
 	}
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
 
-	public String getSenderMail() {
+	public JavaMailSender getMailSender() {
+		return mailSender;
+	}
+
+	@Override
+	public String getSenderEmail() {
 		return senderEmail;
 	}
 
-	@Required
-	public void setSenderEmail(String senderEmail) {
-		this.senderEmail = senderEmail;
-	}
-
+	@Override
 	public String getRecipientEmail() {
 		return recipientEmail;
 	}
-
-	@Required
-	public void setRecipientEmail(String recipientEmail) {
-		this.recipientEmail = recipientEmail;
-	}
-
 }

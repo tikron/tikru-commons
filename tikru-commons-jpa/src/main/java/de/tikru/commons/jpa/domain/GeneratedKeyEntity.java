@@ -7,14 +7,18 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
- * An entity identified by a unique numeric key. 
+ * An entity identified by a unique numeric key.
+ * 
+ * @implNote Currently for MySQL only. See @GeneratedValue strategy.
  *
  * @date 25.03.2009
  * @author Titus Kruse
@@ -26,7 +30,12 @@ public abstract class GeneratedKeyEntity<ID extends Number> implements Entity<ID
 
 	@Id
 	@Column
-	@GeneratedValue
+//	@GeneratedValue
+// We should use the (MySQL) native sequence generator instead of GenerationType.IDENTITY for better performance.
+// See https://vladmihalcea.com/why-should-not-use-the-auto-jpa-generationtype-with-mysql-and-hibernate/
+// See https://thoughts-on-java.org/5-things-you-need-to-know-when-using-hibernate-with-mysql/
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+	@GenericGenerator(name = "native", strategy = "native")
 	protected ID id;
 
 	@Column

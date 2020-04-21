@@ -5,8 +5,6 @@ import java.io.FileInputStream;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Required;
-
 /**
  * Controller providing the byte data taken from a file.
  * 
@@ -17,7 +15,11 @@ import org.springframework.beans.factory.annotation.Required;
  */
 public class FileContentController extends AbstractContentTypeController {
 
-	private String filePath;
+	private final String filePath;
+
+	public FileContentController(String filePath) {
+		this.filePath = filePath;
+	}
 
 	@Override
 	protected byte[] getData(HttpServletRequest req) throws Exception {
@@ -32,10 +34,4 @@ public class FileContentController extends AbstractContentTypeController {
 	public String getFilePath() {
 		return filePath;
 	}
-
-	@Required
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}
-
 }

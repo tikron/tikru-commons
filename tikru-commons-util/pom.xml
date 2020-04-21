@@ -1,20 +1,30 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>tikru-commons-util</artifactId>
-	<name>Tikru Common Utilities</name>
 	<parent>
 		<groupId>de.tikru.commons</groupId>
 		<artifactId>tikru-commons</artifactId>
-		<version>1.0.1-SNAPSHOT</version>
+		<version>3.0</version>
 		<relativePath>../tikru-commons</relativePath>
 	</parent>
+	<artifactId>tikru-commons-util</artifactId>
+	<name>Tikru Common Utilities</name>
 	<dependencies>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.9.8</version>
 		</dependency>
+		<!-- BEGIN: JEP 320: Remove the Java EE and CORBA Modules -->
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+		</dependency>
+		<!-- END -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
