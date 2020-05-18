@@ -3,6 +3,8 @@
 	xmlns="http://www.w3.org/2001/XMLSchema"
 	xmlns:msg="http://www.tikron.de/schema/messager">
 	
+	<element name="messager" type="msg:messagerType"></element>
+	
 	<complexType name="messagerType">
 		<choice>
 			<element name="mail" type="msg:mailMessagerType"></element>
