@@ -17,13 +17,4 @@
 		<module>../tikru-commons-spring</module>
 		<module>../tikru-commons-util</module>
 	</modules>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>de.tikru.commons</groupId>
-				<artifactId>tikru-commons-util</artifactId>
-				<version>3.0</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 </project>

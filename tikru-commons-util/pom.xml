@@ -9,6 +9,7 @@
 		<relativePath>../tikru-commons</relativePath>
 	</parent>
 	<artifactId>tikru-commons-util</artifactId>
+	<version>3.1</version>
 	<name>Tikru Common Utilities</name>
 	<properties>
 		<maven.test.skip>false</maven.test.skip>
