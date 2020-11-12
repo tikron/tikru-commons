@@ -34,8 +34,8 @@ public abstract class GeneratedKeyEntity<ID extends Number> implements Entity<ID
 // We should use the (MySQL) native sequence generator instead of GenerationType.IDENTITY for better performance.
 // See https://vladmihalcea.com/why-should-not-use-the-auto-jpa-generationtype-with-mysql-and-hibernate/
 // See https://thoughts-on-java.org/5-things-you-need-to-know-when-using-hibernate-with-mysql/
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	@GenericGenerator(name = "native", strategy = "native")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	protected ID id;
 
 	@Column
