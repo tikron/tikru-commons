@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>de.tikru.commons</groupId>
 	<artifactId>tikru-commons-faces</artifactId>
-	<version>3.0</version>
+	<version>3.2</version>
 	<name>Tikru Java Server Faces Utilities</name>
 	<dependencies>
 		<dependency>

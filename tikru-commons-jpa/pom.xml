@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>de.tikru.commons</groupId>
 	<artifactId>tikru-commons-jpa</artifactId>
-	<version>3.0</version>
+	<version>3.2</version>
 	<name>Tikru JPA Utilities</name>
 	<dependencies>
 		<dependency>
