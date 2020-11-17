@@ -16,7 +16,7 @@ import java.util.Objects;
  * @date 15.07.2015
  * @author Titus Kruse
  */
-//TODO Should be refactored into multile stream providers
+//TODO Should be refactored into multiple stream providers
 public abstract class ConfigurationManager {
 	
 	protected final String name;
@@ -43,13 +43,7 @@ public abstract class ConfigurationManager {
 			// Access file in the filesystem
 			return new FileInputStream(new File(name));
 		} catch (FileNotFoundException e) {
-			// Access file relative to the current context
-			InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream(name);
-			if (stream == null) {
-				throw new IllegalStateException(MessageFormat.format("configuration not found: {0}",
-						name));
-			}
-			return stream;
+				throw new IllegalStateException(MessageFormat.format("configuration not found: {0}", name));
 		}
 	}
 

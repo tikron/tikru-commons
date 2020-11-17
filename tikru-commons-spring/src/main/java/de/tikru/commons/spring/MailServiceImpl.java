@@ -4,11 +4,15 @@
 package de.tikru.commons.spring;
 
 import java.io.UnsupportedEncodingException;
+import java.text.MessageFormat;
 import java.util.Objects;
 
+import javax.annotation.PostConstruct;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -21,18 +25,22 @@ import org.springframework.mail.javamail.MimeMessageHelper;
  */
 public class MailServiceImpl implements MailService {
 
-	private final JavaMailSender mailSender;
+	private static Logger logger = LogManager.getLogger();
 
-	private final String senderEmail;
+	private JavaMailSender mailSender;
 
-	private final String recipientEmail;
+	private String senderEmail;
+
+	private String recipientEmail;
 	
-	private boolean enabled;
+	private boolean enabled = true;
 
-	public MailServiceImpl(JavaMailSender mailSender, String senderEmail, String recipientEmail) {
-		this.mailSender = Objects.requireNonNull(mailSender, "Constructor argument mailSender must not be null");
-		this.senderEmail = Objects.requireNonNull(senderEmail, "Constructor argument senderEmail must not be null");
-		this.recipientEmail = Objects.requireNonNull(recipientEmail, "Constructor argument recipientEmail must not be null");
+	@PostConstruct
+	public void init() {
+		if (getMailSender() == null) {
+			throw new IllegalStateException("Property mailSender must not be null.");
+		}
+		logger.info(MessageFormat.format("Initialized Mail Service with enabled [{0}].", isEnabled()));
 	}
 
 	public boolean send(String subject, String content) {
@@ -101,13 +109,25 @@ public class MailServiceImpl implements MailService {
 		return mailSender;
 	}
 
+	public void setMailSender(JavaMailSender mailSender) {
+		this.mailSender = mailSender;
+	}
+
 	@Override
 	public String getSenderEmail() {
 		return senderEmail;
 	}
 
+	public void setSenderEmail(String senderEmail) {
+		this.senderEmail = senderEmail;
+	}
+
 	@Override
 	public String getRecipientEmail() {
 		return recipientEmail;
+	}
+
+	public void setRecipientEmail(String recipientEmail) {
+		this.recipientEmail = recipientEmail;
 	}
 }

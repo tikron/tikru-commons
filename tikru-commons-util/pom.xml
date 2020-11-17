@@ -4,12 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>de.tikru.commons</groupId>
-		<artifactId>tikru-commons</artifactId>
-		<version>3.0</version>
-		<relativePath>../tikru-commons</relativePath>
+		<artifactId>tikru-commons-parent</artifactId>
+		<version>1</version>
+		<relativePath>../tikru-commons-parent</relativePath>
 	</parent>
+	<groupId>de.tikru.commons</groupId>
 	<artifactId>tikru-commons-util</artifactId>
-	<version>3.1</version>
+	<version>3.2</version>
 	<name>Tikru Common Utilities</name>
 	<properties>
 		<maven.test.skip>false</maven.test.skip>
