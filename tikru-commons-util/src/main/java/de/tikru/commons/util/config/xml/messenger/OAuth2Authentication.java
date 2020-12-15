@@ -1,4 +1,4 @@
-package de.tikru.commons.util.config.xml.messager;
+package de.tikru.commons.util.config.xml.messenger;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

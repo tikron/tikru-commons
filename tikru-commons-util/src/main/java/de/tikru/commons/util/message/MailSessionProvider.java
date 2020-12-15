@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import javax.mail.Session;
 
-import de.tikru.commons.util.config.xml.messager.Authentication;
+import de.tikru.commons.util.config.xml.messenger.Authentication;
 
 /**
  * 

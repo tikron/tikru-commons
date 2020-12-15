@@ -1,4 +1,4 @@
-package de.tikru.commons.util.config.xml.messager;
+package de.tikru.commons.util.config.xml.messenger;
 
 import javax.mail.internet.InternetAddress;
 import javax.xml.bind.annotation.XmlElement;
@@ -19,7 +19,7 @@ import de.tikru.commons.util.config.xml.BaseElement;
  * @date 08.08.2011
  * @author Titus Kruse
  */
-public class MailMessagerProperties extends BaseElement {
+public class MailMessengerProperties extends BaseElement {
 
 	private String hostname;
 

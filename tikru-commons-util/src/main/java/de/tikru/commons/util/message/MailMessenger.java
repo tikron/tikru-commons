@@ -14,23 +14,23 @@ import javax.mail.internet.MimeMessage;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import de.tikru.commons.util.config.xml.messager.MailMessagerProperties;
-import de.tikru.commons.util.config.xml.messager.OAuth2Authentication;
-import de.tikru.commons.util.config.xml.messager.PasswordAuthentication;
+import de.tikru.commons.util.config.xml.messenger.MailMessengerProperties;
+import de.tikru.commons.util.config.xml.messenger.OAuth2Authentication;
+import de.tikru.commons.util.config.xml.messenger.PasswordAuthentication;
 
 /**
- * A {@link Messager} sending an email.
+ * A {@link Messenger} sending an email.
  *
  * @date 24.06.2015
  * @author Titus Kruse
  */
-public class MailMessager extends BaseMessager {
+public class MailMessenger extends BaseMessenger {
 	
-	private final MailMessagerProperties properties;
+	private final MailMessengerProperties properties;
 	
 	private final Path workDirectory; 
 	
-	public MailMessager(MailMessagerProperties properties, Path workDirectory) {
+	public MailMessenger(MailMessengerProperties properties, Path workDirectory) {
 		this.properties = properties;
 		this.workDirectory = workDirectory;
 	}
@@ -66,7 +66,7 @@ public class MailMessager extends BaseMessager {
 		}
 	}
 
-	public MailMessagerProperties getProperties() {
+	public MailMessengerProperties getProperties() {
 		return properties;
 	}
 
