@@ -8,7 +8,7 @@ import java.util.Properties;
 
 import javax.mail.Session;
 
-import de.tikru.commons.util.config.xml.messenger.PasswordAuthentication;
+import de.tikru.commons.util.message.config.PasswordAuthentication;
 
 /**
  * 

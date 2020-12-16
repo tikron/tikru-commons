@@ -1,6 +1,4 @@
-package de.tikru.commons.util.config.xml.messenger;
-
-import javax.xml.bind.annotation.XmlRootElement;
+package de.tikru.commons.util.message.config;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -10,12 +8,11 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  */
 
 /**
- * Simple POJO holding smtp default authentication properties for OAuth2;
+ * Simple POJO holding SMTP default authentication properties for OAuth2;
  *
  * @date 02.05.2019
  * @author Titus Kruse
  */
-@XmlRootElement(name = "oauth2")
 public class OAuth2Authentication extends Authentication {
 
 	private String username;

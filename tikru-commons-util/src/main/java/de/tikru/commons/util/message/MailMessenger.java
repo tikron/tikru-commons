@@ -14,9 +14,9 @@ import javax.mail.internet.MimeMessage;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import de.tikru.commons.util.config.xml.messenger.MailMessengerProperties;
-import de.tikru.commons.util.config.xml.messenger.OAuth2Authentication;
-import de.tikru.commons.util.config.xml.messenger.PasswordAuthentication;
+import de.tikru.commons.util.message.config.MailMessengerConfiguration;
+import de.tikru.commons.util.message.config.OAuth2Authentication;
+import de.tikru.commons.util.message.config.PasswordAuthentication;
 
 /**
  * A {@link Messenger} sending an email.
@@ -26,11 +26,11 @@ import de.tikru.commons.util.config.xml.messenger.PasswordAuthentication;
  */
 public class MailMessenger extends BaseMessenger {
 	
-	private final MailMessengerProperties properties;
+	private final MailMessengerConfiguration properties;
 	
 	private final Path workDirectory; 
 	
-	public MailMessenger(MailMessengerProperties properties, Path workDirectory) {
+	public MailMessenger(MailMessengerConfiguration properties, Path workDirectory) {
 		this.properties = properties;
 		this.workDirectory = workDirectory;
 	}
@@ -66,7 +66,7 @@ public class MailMessenger extends BaseMessenger {
 		}
 	}
 
-	public MailMessengerProperties getProperties() {
+	public MailMessengerConfiguration getProperties() {
 		return properties;
 	}
 

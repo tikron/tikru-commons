@@ -5,7 +5,8 @@ package de.tikru.commons.util.message;
 
 import java.nio.file.Path;
 
-import de.tikru.commons.util.config.xml.messenger.MessengerProperties;
+import de.tikru.commons.util.message.config.MailMessengerConfiguration;
+import de.tikru.commons.util.message.config.MessengerConfiguration;
 
 /**
  * Constructs a {@link Messenger} depending on type of message to send.
@@ -15,11 +16,13 @@ import de.tikru.commons.util.config.xml.messenger.MessengerProperties;
  */
 public class MessengerFactory {
 	
-	public static Messenger create(MessengerProperties properties, Path workDirectory) {
-		if (properties.getMailProperties() != null) {
-			return new MailMessenger(properties.getMailProperties(), workDirectory);
-		} else { 
-			throw new IllegalArgumentException("Unsupported or missing messenger type.");
+	public static Messenger create(MessengerConfiguration config, Path workDirectory) {
+		if (config instanceof MailMessengerConfiguration) {
+			return new MailMessenger((MailMessengerConfiguration) config, workDirectory);
+		} else if (config == null) {
+			return new DefaultMessenger();
+		} else {
+			throw new IllegalArgumentException("Unsupported messenger type.");
 		}
 	}
 }
