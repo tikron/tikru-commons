@@ -12,7 +12,6 @@ import javax.mail.Transport;
 import javax.mail.internet.MimeMessage;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 
 import de.tikru.commons.util.message.config.MailMessengerConfiguration;
 import de.tikru.commons.util.message.config.OAuth2Authentication;
@@ -72,6 +71,6 @@ public class MailMessenger extends BaseMessenger {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).append("host", properties.getHostname()).append("to", properties.getTo()).build();
+		return new ToStringBuilder(this).append("host", properties.getHostname()).append("to", properties.getTo()).build();
 	}
 }
