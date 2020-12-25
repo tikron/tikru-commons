@@ -1,32 +1,27 @@
-package de.tikru.commons.util.config.xml.messager;
+/**
+	* Copyright (c) 2020 by Titus Kruse.
+	*/
+
+package de.tikru.commons.util.message.config;
 
 import javax.mail.internet.InternetAddress;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import de.tikru.commons.util.config.xml.BaseElement;
-
 /**
- * Copyright (c) 2011 by Titus Kruse.
- */
+	* Messenger configuration for e-mail messaging.
+	*
+	* @date Dec 15, 2020
+	* @author Titus Kruse
+	*/
 
-/**
- * Simple POJO holding the email properties;
- *
- * @date 08.08.2011
- * @author Titus Kruse
- */
-public class MailMessagerProperties extends BaseElement {
+public class MailMessengerConfiguration extends MessengerConfiguration {
 
 	private String hostname;
 
 	private int port;
 
-	@XmlElements({ @XmlElement(name = "passwordAuth", type = PasswordAuthentication.class),
-			@XmlElement(name = "oauth2", type = OAuth2Authentication.class) })
 	private Authentication authentication;
 
 	private boolean debug;
@@ -51,20 +46,20 @@ public class MailMessagerProperties extends BaseElement {
 		this.port = port;
 	}
 
-	public boolean isDebug() {
-		return debug;
-	}
-
-	public void setDebug(boolean debug) {
-		this.debug = debug;
-	}
-
 	public Authentication getAuthentication() {
 		return authentication;
 	}
 
 	public void setAuthentication(Authentication authentication) {
 		this.authentication = authentication;
+	}
+
+	public boolean isDebug() {
+		return debug;
+	}
+
+	public void setDebug(boolean debug) {
+		this.debug = debug;
 	}
 
 	public InternetAddress getFrom() {

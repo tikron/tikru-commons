@@ -8,12 +8,12 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 /**
- * Base class for all my messagers
+ * Base class for all my messengers
  *
  * @date 08.05.2019
  * @author Titus Kruse
  */
-public abstract class BaseMessager implements Messager {
+public abstract class BaseMessenger implements Messenger {
 
 	@Override
 	public abstract void notify(String message, String subject) throws MessagingException; 
