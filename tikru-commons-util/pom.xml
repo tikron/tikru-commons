@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>de.tikru.commons</groupId>
 	<artifactId>tikru-commons-util</artifactId>
-	<version>3.3</version>
+	<version>3.4</version>
 	<name>Tikru Common Utilities</name>
 	<properties>
 		<maven.test.skip>false</maven.test.skip>
@@ -43,6 +43,10 @@
 			<artifactId>javax.mail</artifactId>
 			<version>${mail.version}</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
