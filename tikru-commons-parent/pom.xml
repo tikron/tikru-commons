@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>de.tikru</groupId>
 		<artifactId>tikru-base</artifactId>
-		<version>3</version>
+		<version>4</version>
 		<relativePath>../../tikru-base</relativePath>
 	</parent>
 	<groupId>de.tikru.commons</groupId>
