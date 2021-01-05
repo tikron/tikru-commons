@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2015 by Titus Kruse.
  */
-package de.tikru.commons.util.message;
+package de.tikru.commons.message;
 
 import java.io.IOException;
 

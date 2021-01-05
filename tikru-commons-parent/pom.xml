@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>de.tikru</groupId>
 		<artifactId>tikru-base</artifactId>
-		<version>3</version>
+		<version>4</version>
 		<relativePath>../../tikru-base</relativePath>
 	</parent>
 	<groupId>de.tikru.commons</groupId>
@@ -16,6 +16,7 @@
 	<modules>
 		<module>../tikru-commons-faces</module>
 		<module>../tikru-commons-jpa</module>
+		<module>../tikru-commons-message</module>
 		<module>../tikru-commons-spring</module>
 		<module>../tikru-commons-util</module>
 	</modules>

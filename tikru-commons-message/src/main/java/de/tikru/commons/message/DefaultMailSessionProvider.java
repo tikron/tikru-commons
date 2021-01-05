@@ -1,14 +1,14 @@
 /**
  * Copyright (c) 2019 by Titus Kruse.
  */
-package de.tikru.commons.util.message;
+package de.tikru.commons.message;
 
 import java.io.IOException;
 import java.util.Properties;
 
 import javax.mail.Session;
 
-import de.tikru.commons.util.message.config.PasswordAuthentication;
+import de.tikru.commons.message.config.PasswordAuthentication;
 
 /**
  * 

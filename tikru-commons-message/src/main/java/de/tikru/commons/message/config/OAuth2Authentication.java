@@ -1,4 +1,4 @@
-package de.tikru.commons.util.message.config;
+package de.tikru.commons.message.config;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;

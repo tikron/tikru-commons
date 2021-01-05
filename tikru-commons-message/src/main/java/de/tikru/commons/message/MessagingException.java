@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2015 by Titus Kruse.
  */
-package de.tikru.commons.util.message;
+package de.tikru.commons.message;
 
 /**
  * Indicates an exception thrown after a runtime error while sending a message.
