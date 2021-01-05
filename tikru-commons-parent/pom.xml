@@ -16,6 +16,7 @@
 	<modules>
 		<module>../tikru-commons-faces</module>
 		<module>../tikru-commons-jpa</module>
+		<module>../tikru-commons-message</module>
 		<module>../tikru-commons-spring</module>
 		<module>../tikru-commons-util</module>
 	</modules>

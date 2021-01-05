@@ -1,12 +1,12 @@
 /**
  * Copyright (c) 2015 by Titus Kruse.
  */
-package de.tikru.commons.util.message;
+package de.tikru.commons.message;
 
 import java.nio.file.Path;
 
-import de.tikru.commons.util.message.config.MailMessengerConfiguration;
-import de.tikru.commons.util.message.config.MessengerConfiguration;
+import de.tikru.commons.message.config.MailMessengerConfiguration;
+import de.tikru.commons.message.config.MessengerConfiguration;
 
 /**
  * Constructs a {@link Messenger} depending on type of message to send.

@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2015 by Titus Kruse.
  */
-package de.tikru.commons.util.message;
+package de.tikru.commons.message;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -13,9 +13,9 @@ import javax.mail.internet.MimeMessage;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import de.tikru.commons.util.message.config.MailMessengerConfiguration;
-import de.tikru.commons.util.message.config.OAuth2Authentication;
-import de.tikru.commons.util.message.config.PasswordAuthentication;
+import de.tikru.commons.message.config.MailMessengerConfiguration;
+import de.tikru.commons.message.config.OAuth2Authentication;
+import de.tikru.commons.message.config.PasswordAuthentication;
 
 /**
  * A {@link Messenger} sending an email.

@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2019 by Titus Kruse.
  */
-package de.tikru.commons.util.message;
+package de.tikru.commons.message;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.tikru.commons.util.message.config.OAuth2Authentication;
+import de.tikru.commons.message.config.OAuth2Authentication;
 
 /**
  * 

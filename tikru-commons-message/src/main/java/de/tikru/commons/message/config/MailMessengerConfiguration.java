@@ -2,7 +2,7 @@
 	* Copyright (c) 2020 by Titus Kruse.
 	*/
 
-package de.tikru.commons.util.message.config;
+package de.tikru.commons.message.config;
 
 import javax.mail.internet.InternetAddress;
 

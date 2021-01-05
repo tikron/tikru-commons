@@ -2,7 +2,7 @@
 	* Copyright (c) 2020 by Titus Kruse.
 	*/
 
-package de.tikru.commons.util.message;
+package de.tikru.commons.message;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
