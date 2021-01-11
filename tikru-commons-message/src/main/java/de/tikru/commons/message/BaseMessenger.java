@@ -10,8 +10,8 @@ import java.io.StringWriter;
 /**
  * Base class for all my messengers
  *
- * @since 08.05.2019
  * @author Titus Kruse
+ * @since 08.05.2019
  */
 public abstract class BaseMessenger implements Messenger {
 

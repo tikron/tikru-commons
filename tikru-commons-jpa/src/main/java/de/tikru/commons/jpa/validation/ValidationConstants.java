@@ -6,8 +6,8 @@ package de.tikru.commons.jpa.validation;
 /**
  * Defines some constants used for validation.
  *
- * @since 13.05.2015
  * @author Titus Kruse
+ * @since 13.05.2015
  */
 public final class ValidationConstants {
 

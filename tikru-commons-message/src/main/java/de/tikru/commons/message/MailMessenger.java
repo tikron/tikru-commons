@@ -20,8 +20,8 @@ import de.tikru.commons.message.config.PasswordAuthentication;
 /**
  * A {@link Messenger} sending an email.
  *
- * @since 24.06.2015
  * @author Titus Kruse
+ * @since 24.06.2015
  */
 public class MailMessenger extends BaseMessenger {
 	

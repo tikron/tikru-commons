@@ -9,8 +9,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 /**
 	* Default messenger currently ignoring messages
 	*
-	* @since Dec 16, 2020
 	* @author Titus Kruse
+	* @since Dec 16, 2020
 	*/
 
 public class DefaultMessenger extends BaseMessenger {

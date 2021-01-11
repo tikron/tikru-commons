@@ -16,8 +16,8 @@ import org.springframework.web.servlet.view.RedirectView;
  * 
  * @see https://stackoverflow.com/q/2163517
  * 
- * @since 02.01.2013
  * @author Titus
+ * @since 02.01.2013
  */
 public class RedirectViewResolver implements ViewResolver, Ordered {
 	// Have a highest priority by default

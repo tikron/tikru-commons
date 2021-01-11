@@ -10,8 +10,8 @@ import javax.persistence.Converter;
 /**
  * JPA attribute converter converting between {@link java.sql.Timestamp} and {@link java.time.Instant}. It is assumed that persistence layer time zone is system default and instant time zone is UTC. 
  *
- * @since 29.06.2017
  * @author Titus Kruse
+ * @since 29.06.2017
  */
 @Converter(autoApply = true)
 public class InstantAttributeConverter implements AttributeConverter<Instant, Timestamp> {

@@ -13,8 +13,8 @@ import javax.servlet.ServletContext;
 /**
  * Static class providing some utility methods.
  *
- * @since 24.02.2011
  * @author Titus Kruse
+ * @since 24.02.2011
  */
 public class FacesUtil {
 

@@ -11,8 +11,8 @@ import javax.faces.component.UIOutput;
  * 
  * Syntax: outputLabel [for="for"] [id="id"] [required="true|false] [styleClass="css-class"] [value="value"]
  *
- * @since 13.12.2010
  * @author Titus Kruse
+ * @since 13.12.2010
  */
 @FacesComponent("de.tikru.commons.faces.OutputLabel")
 public class OutputLabel extends UIOutput {

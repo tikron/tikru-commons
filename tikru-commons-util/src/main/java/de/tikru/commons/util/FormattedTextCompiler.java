@@ -20,8 +20,8 @@ import java.util.regex.Pattern;
  * Lorem ipsum [a -e http://www.dolor.de "dolor"] sit amet, consectetuer [a /index.html "adipiscing elit"], sed diam 
  * [a nonummy] nibh euismod [b "tincidunt ut laoreet"] dolore magna aliquam erat volutpat.
  *
- * @since 23.02.2015
  * @author Titus Kruse
+ * @since 23.02.2015
  */
 public class FormattedTextCompiler {
 	

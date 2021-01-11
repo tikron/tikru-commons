@@ -9,8 +9,8 @@ import javax.persistence.Converter;
 /**
  * JPA attribute converter converting between {@link java.sql.Date} and {@link java.time.LocalDate}. 
  *
- * @since 29.06.2017
  * @author Titus Kruse
+ * @since 29.06.2017
  */
 @Converter(autoApply = true)
 public class LocalDateAttributeConverter implements AttributeConverter<LocalDate, Date> {

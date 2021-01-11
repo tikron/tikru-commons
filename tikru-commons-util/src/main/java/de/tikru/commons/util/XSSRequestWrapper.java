@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequestWrapper;
  * @see https://defensivecode.wordpress.com/2013/09/03/spring-security-xss/
  * 
  *
- * @since 11.12.2014
  * @author manavdewan
+ * @since 11.12.2014
  */
 public class XSSRequestWrapper extends HttpServletRequestWrapper {
 

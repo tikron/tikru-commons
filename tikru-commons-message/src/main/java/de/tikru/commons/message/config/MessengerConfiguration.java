@@ -11,8 +11,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 /**
 	* Base class of all JSON messenger configurations 
 	*
-	* @since Dec 15, 2020
 	* @author Titus Kruse
+	* @since Dec 15, 2020
 	*/
 
 @JsonTypeInfo(

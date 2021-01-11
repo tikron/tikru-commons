@@ -16,8 +16,8 @@ import javax.validation.Payload;
  * 
  * Note: Can also be done by built in @Pattern annotation, but this is an experiment with a custom annotation.
  *
- * @since 05.01.2015
  * @author Titus Kruse
+ * @since 05.01.2015
  */
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)

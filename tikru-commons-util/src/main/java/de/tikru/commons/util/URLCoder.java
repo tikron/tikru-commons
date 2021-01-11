@@ -10,8 +10,8 @@ import java.net.URLEncoder;
 /**
  * Utility class simplified de/encoding of URLs. UTF-8 will be used as stated by W3C.
  *
- * @since 27.07.2015
  * @author Titus Kruse
+ * @since 27.07.2015
  */
 public class URLCoder {
 	

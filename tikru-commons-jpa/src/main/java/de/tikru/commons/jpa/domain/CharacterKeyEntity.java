@@ -15,8 +15,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 /**
  * An entity identified by a natural key.
  *
- * @since 21.03.2012
  * @author Titus Kruse
+ * @since 21.03.2012
  */
 @MappedSuperclass
 public abstract class CharacterKeyEntity implements Entity<String>, Versioned, Historical {

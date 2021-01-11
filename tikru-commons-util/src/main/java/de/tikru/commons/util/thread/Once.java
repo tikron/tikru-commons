@@ -10,8 +10,8 @@ import java.util.function.Supplier;
  * 
  * @see https://www.nosid.org/java8-threadsafe-lazy-initialization.html
  *
- * @since 05.10.2019
  * @author Hubert Schmid
+ * @since 05.10.2019
  * @author Titus Kruse
  */
 public final class Once<T> {

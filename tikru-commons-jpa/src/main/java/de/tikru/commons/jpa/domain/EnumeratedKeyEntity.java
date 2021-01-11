@@ -20,8 +20,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * 
  * @param ID The type of the primary key. Should be an enumerated class.
  *
- * @since 01.04.2015
  * @author Titus Kruse
+ * @since 01.04.2015
  */
 @MappedSuperclass
 public abstract class EnumeratedKeyEntity<ID extends Serializable> implements Entity<ID>, Versioned, Historical {

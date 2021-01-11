@@ -9,8 +9,8 @@ import org.springframework.validation.Errors;
 /**
  * Erweitert die von Spring angebotene Klasse um weitere Validatoren.
  * 
- * @since 29.12.2009
  * @author Titus Kruse
+ * @since 29.12.2009
  */
 public class ValidationUtils extends org.springframework.validation.ValidationUtils {
 

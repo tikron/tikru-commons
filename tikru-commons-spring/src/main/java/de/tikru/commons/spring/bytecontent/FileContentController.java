@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Controller providing the byte data taken from a file.
  * 
- * @since 23.06.2010
  * @author Titus Kruse
+ * @since 23.06.2010
  * @author horatiucd
  * @see http://imhoratiu.wordpress.com/2009/10/14/resolving-byte-content-views/
  */

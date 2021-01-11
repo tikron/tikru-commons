@@ -11,8 +11,8 @@ import org.slf4j.Marker;
  * Extends the {@link org.slf4j.Logger} with another logging level "fine". This level is finer then info but not debug.
  * Can be enhanced with finer and finest later on.
  *
- * @since Dec 20, 2020
  * @author Titus Kruse
+ * @since Dec 20, 2020
  */
 
 public interface VerbosableLogger extends Logger {
