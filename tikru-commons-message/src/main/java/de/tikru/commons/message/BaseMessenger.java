@@ -10,7 +10,7 @@ import java.io.StringWriter;
 /**
  * Base class for all my messengers
  *
- * @date 08.05.2019
+ * @since 08.05.2019
  * @author Titus Kruse
  */
 public abstract class BaseMessenger implements Messenger {
@@ -22,8 +22,6 @@ public abstract class BaseMessenger implements Messenger {
 	 * Composes an exception as human readable message. 
 	 * 
 	 * @param t Any {@link Throwable}.
-	 * 
-	 * @return The message text.
 	 */
 	public void notify(Throwable t) throws IOException, MessagingException {
 		try (StringWriter writer = new StringWriter()) {

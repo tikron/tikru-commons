@@ -16,7 +16,7 @@ import javax.faces.render.Renderer;
  * ein Stern (*) angehängt. Dies soll den Benutzer anzeigen, dass eine Eingabe im zugehörigen Eingabefeld erforderlich
  * ist.
  *
- * @date 13.12.2010
+ * @since 13.12.2010
  * @author Titus Kruse
  */
 @FacesRenderer(componentFamily = "javax.faces.Output", rendererType = "de.tikru.commons.faces.OutputLabel")

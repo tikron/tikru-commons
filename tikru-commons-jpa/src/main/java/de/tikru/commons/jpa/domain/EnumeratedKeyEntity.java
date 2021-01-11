@@ -20,7 +20,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * 
  * @param ID The type of the primary key. Should be an enumerated class.
  *
- * @date 01.04.2015
+ * @since 01.04.2015
  * @author Titus Kruse
  */
 @MappedSuperclass

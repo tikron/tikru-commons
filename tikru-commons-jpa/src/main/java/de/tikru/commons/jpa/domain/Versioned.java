@@ -6,7 +6,7 @@ package de.tikru.commons.jpa.domain;
 /**
  * Declares a persistent object as versioned. A versioned object has a version number used for optimistic locking.
  *
- * @date 19.03.2015
+ * @since 19.03.2015
  * @author Titus Kruse
  */
 public interface Versioned {

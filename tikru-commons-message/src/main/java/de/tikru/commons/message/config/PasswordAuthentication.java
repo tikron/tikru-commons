@@ -10,7 +10,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 /**
  * Simple POJO holding SMTP default authentication properties with user name and password;
  *
- * @date 02.05.2019
+ * @since 02.05.2019
  * @author Titus Kruse
  */
 public class PasswordAuthentication extends Authentication {

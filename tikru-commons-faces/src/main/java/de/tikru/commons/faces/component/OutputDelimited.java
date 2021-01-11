@@ -11,7 +11,7 @@ import javax.faces.component.UIOutput;
  * 
  * Syntax: OutputDelimited[id="id"] [maxlength="length"] [styleClass="css-class"] [value="value"]
  *
- * @date 04.02.2012
+ * @since 04.02.2012
  * @author Titus Kruse
  */
 @FacesComponent("de.tikru.commons.faces.OutputDelimited")

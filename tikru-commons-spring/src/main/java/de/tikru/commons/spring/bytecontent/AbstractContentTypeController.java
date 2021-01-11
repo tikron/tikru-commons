@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.AbstractController;
 /**
  * Abstract Controller able to handle resources of any content type (image/jpeg, text/html, x-application/pdf).
  * 
- * @date 23.06.2010
+ * @since 23.06.2010
  * @author Titus Kruse
  * @author horatiucd
  * @see http://imhoratiu.wordpress.com/2009/10/14/resolving-byte-content-views/

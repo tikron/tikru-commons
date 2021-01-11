@@ -14,7 +14,7 @@ import javax.validation.Payload;
 /**
  * Rejects unwanted Top Level Domains in an URL.
  * 
- * @date 14.11.2015
+ * @since 14.11.2015
  * @author Titus Kruse
  */
 @Target({ElementType.METHOD, ElementType.FIELD})

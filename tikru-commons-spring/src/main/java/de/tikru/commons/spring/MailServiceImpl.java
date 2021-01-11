@@ -21,7 +21,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 /**
  * Stellt Funktionen zum Versenden von E-Mails bereit (Standardimplementierung).
  *
- * @date 23.12.2009
+ * @since 23.12.2009
  * @author Titus Kruse
  */
 public class MailServiceImpl implements MailService {

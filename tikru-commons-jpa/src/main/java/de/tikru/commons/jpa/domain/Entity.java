@@ -11,7 +11,7 @@ import java.io.Serializable;
  * 
  * @param ID The type of the unique identifier used to access the entity.
  *
- * @date 25.03.2009
+ * @since 25.03.2009
  * @author Titus Kruse
  */
 public interface Entity<ID extends Serializable> extends Serializable {

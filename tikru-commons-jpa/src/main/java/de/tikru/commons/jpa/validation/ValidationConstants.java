@@ -6,7 +6,7 @@ package de.tikru.commons.jpa.validation;
 /**
  * Defines some constants used for validation.
  *
- * @date 13.05.2015
+ * @since 13.05.2015
  * @author Titus Kruse
  */
 public final class ValidationConstants {

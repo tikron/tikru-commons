@@ -9,7 +9,7 @@ import javax.persistence.Converter;
 /**
  * JPA attribute converter converting between {@link java.sql.Date} and {@link java.time.LocalDate}. 
  *
- * @date 29.06.2017
+ * @since 29.06.2017
  * @author Titus Kruse
  */
 @Converter(autoApply = true)

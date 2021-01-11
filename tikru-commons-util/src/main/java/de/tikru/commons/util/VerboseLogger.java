@@ -10,7 +10,7 @@ import org.slf4j.Marker;
 /**
 	* Default implementation of the {@link VerbosableLogger}. 
 	*
-	* @date Dec 20, 2020
+	* @since Dec 20, 2020
 	* @author Titus Kruse
 	*/
 

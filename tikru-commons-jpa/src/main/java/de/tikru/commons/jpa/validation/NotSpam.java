@@ -16,7 +16,7 @@ import javax.validation.Payload;
  * 
  * Note: Can also be done by built in @Pattern annotation, but this is an experiment with a custom annotation.
  *
- * @date 05.01.2015
+ * @since 05.01.2015
  * @author Titus Kruse
  */
 @Target({ElementType.METHOD, ElementType.FIELD})

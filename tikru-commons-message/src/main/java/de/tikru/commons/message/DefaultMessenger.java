@@ -9,7 +9,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 /**
 	* Default messenger currently ignoring messages
 	*
-	* @date Dec 16, 2020
+	* @since Dec 16, 2020
 	* @author Titus Kruse
 	*/
 

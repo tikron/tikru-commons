@@ -15,7 +15,7 @@ import javax.faces.render.Renderer;
  * Renderer für die Komponente OutputDelimited. Der Text im Attribut "value" wird ggf. auf die maximale Länge von
  * "maxLength" beschnitten.
  *
- * @date 04.02.0212
+ * @since 04.02.0212
  * @author Titus Kruse
  */
 @FacesRenderer(componentFamily = "javax.faces.Output", rendererType = "de.tikru.commons.faces.OutputDelimited")

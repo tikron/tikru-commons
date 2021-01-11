@@ -27,7 +27,7 @@ import de.tikru.commons.message.config.OAuth2Authentication;
 /**
  * 
  *
- * @date 05.05.2019
+ * @since 05.05.2019
  * @author Titus Kruse
  */
 public class GoogleMailSessionProvider implements MailSessionProvider<OAuth2Authentication> {

@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
  * @see https://defensivecode.wordpress.com/2013/09/03/spring-security-xss/
  * @see http://codehustler.org/blog/jersey-cross-site-scripting-xss-filter-for-java-web-apps/
  *
- * @date 11.12.2014
+ * @since 11.12.2014
  * @author manavdewan
  */
 public class XSSFilter implements Filter {

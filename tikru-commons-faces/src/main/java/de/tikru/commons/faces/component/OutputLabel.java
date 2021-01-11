@@ -11,7 +11,7 @@ import javax.faces.component.UIOutput;
  * 
  * Syntax: outputLabel [for="for"] [id="id"] [required="true|false] [styleClass="css-class"] [value="value"]
  *
- * @date 13.12.2010
+ * @since 13.12.2010
  * @author Titus Kruse
  */
 @FacesComponent("de.tikru.commons.faces.OutputLabel")

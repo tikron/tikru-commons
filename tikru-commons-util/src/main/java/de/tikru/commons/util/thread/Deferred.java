@@ -11,7 +11,7 @@ import java.util.function.Supplier;
  * 
  * @see https://www.nosid.org/java8-threadsafe-lazy-initialization.html
  *
- * @date 05.10.2019
+ * @since 05.10.2019
  * @author Hubert Schmid
  * @author Titus Kruse
  */

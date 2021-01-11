@@ -8,9 +8,9 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 /**
- * JPA attribute converter converting between {@link ava.sql.Timestamp} and {@link java.time.LocalDateTime}. It is assumed that persistence layer time zone is system default. 
+ * JPA attribute converter converting between {@link java.sql.Timestamp} and {@link java.time.LocalDateTime}. It is assumed that persistence layer time zone is system default. 
  *
- * @date 29.06.2017
+ * @since 29.06.2017
  * @author Titus Kruse
  */
 @Converter(autoApply = true)

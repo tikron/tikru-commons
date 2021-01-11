@@ -6,7 +6,7 @@ package de.tikru.commons.message;
 /**
  * Indicates an exception thrown after a runtime error while sending a message.
  *
- * @date 24.06.2015
+ * @since 24.06.2015
  * @author Titus Kruse
  */
 public class MessagingException extends RuntimeException {

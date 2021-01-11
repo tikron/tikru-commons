@@ -14,7 +14,7 @@ import javax.servlet.ServletResponse;
  * 
  * @see http://wiki.apache.org/tomcat/Tomcat/UTF-8
  *
- * @date 15.08.2009
+ * @since 15.08.2009
  * @author Titus Kruse
  */
 public class CharsetFilter implements Filter {

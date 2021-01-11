@@ -14,7 +14,7 @@ import org.apache.commons.lang3.ObjectUtils;
  * in Getter und Setter für jeden Scope auf.
  * 
  * @author Titus Kruse
- * @author BalusC ({@link http://balusc.blogspot.com/2006/06/communication-in-jsf.html})
+ * @author BalusC (@see http://balusc.blogspot.com/2006/06/communication-in-jsf.html)
  */
 public class FacesParameter {
 
@@ -101,7 +101,7 @@ public class FacesParameter {
 	/**
 	 * Exception thrown when a parameter was not found in the specific scope.
 	 * 
-	 * @date 24.02.2011
+	 * @since 24.02.2011
 	 * @author Titus Kruse
 	 */
 	public static class ParameterNotFoundException extends RuntimeException {

@@ -20,7 +20,7 @@ import org.hibernate.annotations.GenericGenerator;
  * 
  * @implNote Currently for MySQL only. See @GeneratedValue strategy.
  *
- * @date 25.03.2009
+ * @since 25.03.2009
  * @author Titus Kruse
  */
 @MappedSuperclass

@@ -15,7 +15,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 /**
  * An entity identified by a natural key.
  *
- * @date 21.03.2012
+ * @since 21.03.2012
  * @author Titus Kruse
  */
 @MappedSuperclass

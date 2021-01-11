@@ -10,7 +10,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 /**
  * Simple POJO holding SMTP default authentication properties for OAuth2;
  *
- * @date 02.05.2019
+ * @since 02.05.2019
  * @author Titus Kruse
  */
 public class OAuth2Authentication extends Authentication {

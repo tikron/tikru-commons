@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 /**
 	* Base class of all JSON messenger configurations 
 	*
-	* @date Dec 15, 2020
+	* @since Dec 15, 2020
 	* @author Titus Kruse
 	*/
 

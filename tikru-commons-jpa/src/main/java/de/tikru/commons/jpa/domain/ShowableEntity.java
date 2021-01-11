@@ -9,7 +9,7 @@ import java.io.Serializable;
  * 
  * @param <ID> The type of primary key.
  *
- * @date 28.04.2015
+ * @since 28.04.2015
  * @author Titus Kruse
  */
 public interface ShowableEntity<ID extends Serializable> extends Entity<ID>, Showable {
