@@ -13,8 +13,8 @@ import javax.persistence.TypedQuery;
 /**
  * Some utility methods to use with JPA. 
  *
- * @date 09.04.2015
  * @author Titus Kruse
+ * @since 09.04.2015
  */
 public class JpaUtil {
 	

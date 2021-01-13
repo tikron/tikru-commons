@@ -14,8 +14,8 @@ import javax.validation.ConstraintValidatorContext;
 /**
  * Rejects unwanted Top Level Domains in an URL.
  *
- * @date 14.11.2015
  * @author Titus Kruse
+ * @since 14.11.2015
  */
 public class AllowedDomainValidator implements ConstraintValidator<AllowedDomain, String> {
 	

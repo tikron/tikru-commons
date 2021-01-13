@@ -14,8 +14,8 @@ import de.tikru.commons.util.FormattedTextCompiler.AttributeMap;
 /**
  * Tests for {@link de.tikru.commons.util.FormattedTextCompiler}.
  *
- * @date 24.03.2015
  * @author Titus Kruse
+ * @since 24.03.2015
  */
 public class FormattedTextCompilerTest {
 	

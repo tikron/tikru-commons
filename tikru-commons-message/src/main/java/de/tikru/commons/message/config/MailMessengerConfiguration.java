@@ -12,8 +12,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 /**
 	* Messenger configuration for e-mail messaging.
 	*
-	* @date Dec 15, 2020
 	* @author Titus Kruse
+	* @since Dec 15, 2020
 	*/
 
 public class MailMessengerConfiguration extends MessengerConfiguration {

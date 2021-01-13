@@ -20,8 +20,8 @@ import org.hibernate.annotations.GenericGenerator;
  * 
  * @implNote Currently for MySQL only. See @GeneratedValue strategy.
  *
- * @date 25.03.2009
  * @author Titus Kruse
+ * @since 25.03.2009
  */
 @MappedSuperclass
 public abstract class GeneratedKeyEntity<ID extends Number> implements Entity<ID>, Versioned, Historical {

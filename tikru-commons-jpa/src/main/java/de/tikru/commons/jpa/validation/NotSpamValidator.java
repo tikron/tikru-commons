@@ -12,8 +12,8 @@ import javax.validation.ConstraintValidatorContext;
 /**
  * Rejects unwanted text.
  *
- * @date 05.01.2015
  * @author Titus Kruse
+ * @since 05.01.2015
  */
 public class NotSpamValidator implements ConstraintValidator<NotSpam, String> {
 	

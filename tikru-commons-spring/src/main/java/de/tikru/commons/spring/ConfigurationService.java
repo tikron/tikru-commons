@@ -8,8 +8,8 @@ import java.util.Properties;
 /**
  * Liefert Basisfunktionen zum Konfigrieren der Anwendung.
  *
- * @date 23.12.2009
  * @author Titus Kruse
+ * @since 23.12.2009
  */
 public interface ConfigurationService {
 

@@ -8,8 +8,8 @@ import java.time.LocalDateTime;
 /**
  * Declares a persistent object as historical. The object has a timestamp created.
  *
- * @date 19.03.2015
  * @author Titus Kruse
+ * @since 19.03.2015
  */
 public interface Historical {
 	

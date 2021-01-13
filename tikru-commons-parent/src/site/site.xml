@@ -9,7 +9,7 @@
  |  retransmission, in any form or by any means, electronic, mechanical or
  |  otherwise, for reasons other than personal use, is strictly prohibited
  |  without prior written permission.
- ->
+ -->
 <project name="${project.name}">
 
   <publishDate format="dd MMMM yyyy" position="left" />

@@ -12,8 +12,8 @@ import javax.persistence.Query;
 /**
  * Provides methods to execute a query directly without defining it as named query.
  *
- * @date 06.10.2010
  * @author Titus Kruse
+ * @since 06.10.2010
  */
 public class DataAccessHelper {
 

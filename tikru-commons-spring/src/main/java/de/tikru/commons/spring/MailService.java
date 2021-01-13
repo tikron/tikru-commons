@@ -6,8 +6,8 @@ package de.tikru.commons.spring;
 /**
  * Stellt Funktionen zum Versenden von E-Mails bereit.
  *
- * @date 23.12.2009
  * @author Titus Kruse
+ * @since 23.12.2009
  */
 public interface MailService {
 

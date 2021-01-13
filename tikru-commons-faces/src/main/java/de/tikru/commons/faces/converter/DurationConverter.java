@@ -16,7 +16,7 @@ import javax.faces.convert.FacesConverter;
 /**
  * Faces Converter converting between Duration and formatted string. The external representation of Duration will be a time like hh:mm:ss instead of PHhhMmmSss.
  * 
- * @date 01.08.2017
+ * @since 01.08.2017
  * 
  * @author Titus Kruse
  */

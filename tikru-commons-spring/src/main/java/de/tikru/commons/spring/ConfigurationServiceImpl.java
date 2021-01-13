@@ -20,8 +20,8 @@ import org.springframework.web.context.ServletContextAware;
  * Umgebung wird im Anwendungskontext als Init-Parameter "environment" hinterlegt und kann so je Host oder
  * Tomcat-Instanz dynamisch vergeben werden.
  * 
- * @date 23.12.2009
  * @author Titus Kruse
+ * @since 23.12.2009
  */
 public class ConfigurationServiceImpl implements ConfigurationService, ServletContextAware {
 
@@ -102,7 +102,7 @@ public class ConfigurationServiceImpl implements ConfigurationService, ServletCo
 	/**
 	 * Wird ausgelöst, falls beim Laden der Konfiguration ein Fehler auftritt.
 	 *
-	 * @date 04.01.2009
+	 * @since 04.01.2009
 	 * @author Titus Kruse
 	 */
 	public static class ConfigurationException extends RuntimeException {

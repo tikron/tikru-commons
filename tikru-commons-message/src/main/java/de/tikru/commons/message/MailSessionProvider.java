@@ -12,8 +12,8 @@ import de.tikru.commons.message.config.Authentication;
 /**
  * 
  *
- * @date 05.05.2019
  * @author Titus Kruse
+ * @since 05.05.2019
  */
 public interface MailSessionProvider<T extends Authentication> {
 	

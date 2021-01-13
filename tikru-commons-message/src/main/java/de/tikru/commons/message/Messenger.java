@@ -8,8 +8,8 @@ import java.io.IOException;
 /**
  * Declares common methods for messengers.
  *
- * @date 24.06.2015
  * @author Titus Kruse
+ * @since 24.06.2015
  */
 public interface Messenger {
 	

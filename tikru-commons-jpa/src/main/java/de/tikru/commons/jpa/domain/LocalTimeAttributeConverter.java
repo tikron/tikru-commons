@@ -7,10 +7,10 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 /**
- * JPA attribute converter converting between {@link ava.sql.Time} and {@link java.time.LocalTime}. 
+ * JPA attribute converter converting between {@link java.sql.Time} and {@link java.time.LocalTime}. 
  *
- * @date 29.06.2017
  * @author Titus Kruse
+ * @since 29.06.2017
  */
 @Converter(autoApply = true)
 public class LocalTimeAttributeConverter implements AttributeConverter<LocalTime, Time> {

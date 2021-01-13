@@ -17,7 +17,7 @@ import javax.faces.convert.FacesConverter;
  * 
  * @see https://stackoverflow.com/questions/34883270/
  *
- * @date 29.06.2017
+ * @since 29.06.2017
  * 
  * @author BalusC
  * @author Titus Kruse

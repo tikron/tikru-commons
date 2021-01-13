@@ -16,7 +16,7 @@ import javax.faces.convert.Converter;
 /**
  * Abstract Date Time Converter with common methods to retrieve component attributes. The format, style, locale and time zone for the presentation input/output can be defined by faces compnent attributes.
  *
- * @date 29.06.2017
+ * @since 29.06.2017
  * 
  * @author BalusC
  * @author Titus Kruse

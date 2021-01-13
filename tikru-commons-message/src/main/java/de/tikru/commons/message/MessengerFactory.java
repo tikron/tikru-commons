@@ -11,8 +11,8 @@ import de.tikru.commons.message.config.MessengerConfiguration;
 /**
  * Constructs a {@link Messenger} depending on type of message to send.
  *
- * @date 24.06.2015
  * @author Titus Kruse
+ * @since 24.06.2015
  */
 public class MessengerFactory {
 	

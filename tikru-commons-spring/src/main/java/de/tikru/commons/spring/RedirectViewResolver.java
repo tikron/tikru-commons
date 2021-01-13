@@ -14,12 +14,10 @@ import org.springframework.web.servlet.view.RedirectView;
  * View resolver providing redirectWithoutModel prefix to perform a redirect without model attributes as request
  * parameters.
  * 
- * @see http
- *      ://stackoverflow.com/questions/2163517/how-do-i-prevent-spring-3-0-mvc-modelattribute-variables-from-appearing
- *      -in-url
+ * @see https://stackoverflow.com/q/2163517
  * 
- * @date 02.01.2013
  * @author Titus
+ * @since 02.01.2013
  */
 public class RedirectViewResolver implements ViewResolver, Ordered {
 	// Have a highest priority by default

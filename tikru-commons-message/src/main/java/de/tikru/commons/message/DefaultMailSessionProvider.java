@@ -13,8 +13,8 @@ import de.tikru.commons.message.config.PasswordAuthentication;
 /**
  * 
  *
- * @date 06.05.2019
  * @author Titus Kruse
+ * @since 06.05.2019
  */
 public class DefaultMailSessionProvider implements MailSessionProvider<PasswordAuthentication> {
 
