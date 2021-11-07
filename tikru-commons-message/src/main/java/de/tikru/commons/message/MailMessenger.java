@@ -40,12 +40,14 @@ public class MailMessenger extends BaseMessenger {
 			Session session;
 			if (properties.getAuthentication() instanceof PasswordAuthentication) {
 				PasswordAuthentication authentication = (PasswordAuthentication) properties.getAuthentication();
-				session = new DefaultMailSessionProvider().provide(properties.getHostname(), properties.getPort(), authentication);
+				session = new PasswordMailSessionProvider().provide(properties.getHostname(), properties.getPort(), authentication);
 			} else if (properties.getAuthentication() instanceof OAuth2Authentication) {
 				OAuth2Authentication authentication = (OAuth2Authentication) properties.getAuthentication();
 				session = new GoogleMailSessionProvider(workDirectory).provide(properties.getHostname(), properties.getPort(), authentication);
+			} else if (properties.getAuthentication() == null) {
+				session = new DefaultMailSessionProvider().provide(properties.getHostname(), properties.getPort());
 			} else {
-				throw new IllegalArgumentException("Unsupported or missing smtp authentication type.");
+				throw new IllegalArgumentException("Unsupported smtp authentication type.");
 			}
 			if (properties.isDebug()) {
 				session.setDebug(true);
