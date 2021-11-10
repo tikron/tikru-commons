@@ -3,6 +3,7 @@
  */
 package de.tikru.commons.message;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.util.Properties;
 
@@ -32,6 +33,8 @@ public class MailMessenger extends BaseMessenger {
 	private final Path workDirectory;
 	
 	private Authenticator authenticator; 
+
+	private static final String ACCESS_TOKEN_FILE_NAME = "google-access-token.json";
 	
 	public MailMessenger(MailMessengerConfiguration config, Path workDirectory) {
 		this.config = config;
@@ -41,7 +44,8 @@ public class MailMessenger extends BaseMessenger {
 			if (config.getAuthentication() instanceof PasswordAuthentication) {
 				authenticator = PasswordAuthenticator.getInstance((PasswordAuthentication) config.getAuthentication());
 			} else if (config.getAuthentication() instanceof OAuth2Authentication) {
-				authenticator = OAuth2Authenticator.getInstance((OAuth2Authentication) config.getAuthentication(), workDirectory);
+				File tokenStore = workDirectory.resolve(ACCESS_TOKEN_FILE_NAME).toFile();
+				authenticator = OAuth2Authenticator.getInstance((OAuth2Authentication) config.getAuthentication(), tokenStore);
 			} else {
 				throw new IllegalArgumentException("Unsupported smtp authentication type.");
 			}
