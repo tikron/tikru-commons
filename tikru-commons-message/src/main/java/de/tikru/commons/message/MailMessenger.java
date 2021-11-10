@@ -3,12 +3,14 @@
  */
 package de.tikru.commons.message;
 
-import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Properties;
 
+import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
+import javax.mail.internet.AddressException;
 import javax.mail.internet.MimeMessage;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -25,54 +27,83 @@ import de.tikru.commons.message.config.PasswordAuthentication;
  */
 public class MailMessenger extends BaseMessenger {
 	
-	private final MailMessengerConfiguration properties;
+	private final MailMessengerConfiguration config;
 	
-	private final Path workDirectory; 
+	private final Path workDirectory;
 	
-	public MailMessenger(MailMessengerConfiguration properties, Path workDirectory) {
-		this.properties = properties;
+	private Authenticator authenticator; 
+	
+	public MailMessenger(MailMessengerConfiguration config, Path workDirectory) {
+		this.config = config;
 		this.workDirectory = workDirectory;
+		
+		if (config.getAuthentication() != null) {
+			if (config.getAuthentication() instanceof PasswordAuthentication) {
+				authenticator = PasswordAuthenticator.getInstance((PasswordAuthentication) config.getAuthentication());
+			} else if (config.getAuthentication() instanceof OAuth2Authentication) {
+				authenticator = OAuth2Authenticator.getInstance((OAuth2Authentication) config.getAuthentication(), workDirectory);
+			} else {
+				throw new IllegalArgumentException("Unsupported smtp authentication type.");
+			}
+		}
 	}
 
 	@Override
 	public void notify(String message, String subject) throws MessagingException {
 		try {
-			Session session;
-			if (properties.getAuthentication() instanceof PasswordAuthentication) {
-				PasswordAuthentication authentication = (PasswordAuthentication) properties.getAuthentication();
-				session = new PasswordMailSessionProvider().provide(properties.getHostname(), properties.getPort(), authentication);
-			} else if (properties.getAuthentication() instanceof OAuth2Authentication) {
-				OAuth2Authentication authentication = (OAuth2Authentication) properties.getAuthentication();
-				session = new GoogleMailSessionProvider(workDirectory).provide(properties.getHostname(), properties.getPort(), authentication);
-			} else if (properties.getAuthentication() == null) {
-				session = new DefaultMailSessionProvider().provide(properties.getHostname(), properties.getPort());
+			Properties props = new Properties();
+			props.setProperty("mail.smtp.host", config.getHostname());
+			if (config.getPort() > 0) {
+				props.setProperty("mail.smtp.port", Integer.toString(config.getPort()));
 			} else {
-				throw new IllegalArgumentException("Unsupported smtp authentication type.");
+				props.setProperty("mail.smtp.port", Integer.toString(25));
 			}
-			if (properties.isDebug()) {
-				session.setDebug(true);
+			// https://stackoverflow.com/questions/411331/using-javamail-with-tls
+			if (config.isStartTLS()) {
+				props.setProperty("mail.smtp.starttls.enable", "true");
+				props.setProperty("mail.smtp.ssl.trust", config.getHostname());
 			}
-			Message msg = new MimeMessage(session);
-			msg.setFrom(properties.getFrom());
-			msg.setRecipient(Message.RecipientType.TO, properties.getTo());
-			msg.setSubject(subject);
-			msg.setText(message);
+			if (config.getAuthentication() != null) {
+				props.setProperty("mail.smtp.auth", "true");
+				if (config.getAuthentication() instanceof OAuth2Authentication) {
+					props.setProperty("mail.smtp.auth.mechanisms", "XOAUTH2");
+				}
+			}
+			if (config.isDebug()) {
+				props.setProperty("mail.debug", "true");
+			}
+			Session session = Session.getInstance(props, authenticator);
 
-			Transport.send(msg);
+			try {
+			  Message msg = new MimeMessage(session);
+				msg.setFrom(config.getFrom());
+				msg.setRecipient(Message.RecipientType.TO, config.getTo());
+				msg.setSubject(subject);
+				msg.setText(message);
+			  Transport.send(msg);
+			} catch (AddressException e) {
+			  // ...
+			} catch (MessagingException e) {
+			  // ...
+			}
 			
 		} catch (javax.mail.MessagingException e) {
 			throw new MessagingException(e);
-		} catch (IOException e) {
-			throw new MessagingException(e);
+//		} catch (IOException e) {
+//			throw new MessagingException(e);
 		}
 	}
 
-	public MailMessengerConfiguration getProperties() {
-		return properties;
+	public MailMessengerConfiguration getConfig() {
+		return config;
+	}
+
+	public Path getWorkDirectory() {
+		return workDirectory;
 	}
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("host", properties.getHostname()).append("to", properties.getTo()).build();
+		return new ToStringBuilder(this).append("host", config.getHostname()).append("to", config.getTo()).build();
 	}
 }

@@ -21,6 +21,8 @@ public class MailMessengerConfiguration extends MessengerConfiguration {
 	private String hostname;
 
 	private int port;
+	
+	private boolean startTLS;
 
 	private Authentication authentication;
 
@@ -44,6 +46,14 @@ public class MailMessengerConfiguration extends MessengerConfiguration {
 
 	public void setPort(int port) {
 		this.port = port;
+	}
+
+	public boolean isStartTLS() {
+		return startTLS;
+	}
+
+	public void setStartTLS(boolean startTLS) {
+		this.startTLS = startTLS;
 	}
 
 	public Authentication getAuthentication() {
