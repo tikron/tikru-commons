@@ -3,7 +3,6 @@
  */
 package de.tikru.commons.message;
 
-import java.io.File;
 import java.nio.file.Path;
 import java.util.Properties;
 
@@ -16,6 +15,7 @@ import javax.mail.internet.MimeMessage;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import de.tikru.commons.message.config.Authentication;
 import de.tikru.commons.message.config.MailMessengerConfiguration;
 import de.tikru.commons.message.config.OAuth2Authentication;
 import de.tikru.commons.message.config.PasswordAuthentication;
@@ -41,16 +41,28 @@ public class MailMessenger extends BaseMessenger {
 		this.workDirectory = workDirectory;
 		
 		if (config.getAuthentication() != null) {
-			if (config.getAuthentication() instanceof PasswordAuthentication) {
-				authenticator = PasswordAuthenticator.getInstance((PasswordAuthentication) config.getAuthentication());
-			} else if (config.getAuthentication() instanceof OAuth2Authentication) {
-				OAuth2Authentication properties = (OAuth2Authentication) config.getAuthentication();
-				File tokenStore = workDirectory.resolve(ACCESS_TOKEN_FILE_NAME).toFile();
-				AccessTokenGenerator generator = new GoogleAccessTokenGenerator(tokenStore, properties.getClientId(), properties.getClientSecret(), properties.getRefreshToken());
-				authenticator = OAuth2Authenticator.getInstance(properties.getUsername(), generator);
-			} else {
-				throw new IllegalArgumentException("Unsupported smtp authentication type.");
-			}
+			authenticator = createAuthenticator(config.getAuthentication(), workDirectory);
+		}
+	}
+
+	/**
+	 * Creates an {@link javax.mail.Authenticator} based on the given type of {@link de.tikru.commons.message.config.Authentication}.
+	 * 
+	 * @param authentication
+	 * @param workDirectory
+	 * 
+	 * @return
+	 */
+	private static Authenticator createAuthenticator(Authentication authentication, Path workDirectory) {
+		if (authentication instanceof PasswordAuthentication) {
+			return PasswordAuthenticator.getInstance((PasswordAuthentication) authentication);
+		} else if (authentication instanceof OAuth2Authentication) {
+			OAuth2Authentication properties = (OAuth2Authentication) authentication;
+			AccessTokenGenerator generator = new GoogleAccessTokenGenerator(properties.getClientId(), properties.getClientSecret(), properties.getRefreshToken());
+			AccessTokenStore tokenStore = new FileAccessTokenStore(workDirectory.resolve(ACCESS_TOKEN_FILE_NAME));
+			return OAuth2Authenticator.getInstance(properties, generator, tokenStore);
+		} else {
+			throw new IllegalArgumentException("Unsupported smtp authentication type.");
 		}
 	}
 
