@@ -23,18 +23,15 @@ public class OAuth2Authenticator extends Authenticator {
 	
 	private final OAuth2Authentication properties;
 
-	private final AccessTokenGenerator generator;
+	private AccessTokenGenerator generator;
 
 	private final AccessTokenStore tokenStore;
 
-	private OAuth2Authenticator(OAuth2Authentication properties, AccessTokenGenerator generator, AccessTokenStore tokenStore) {
+	public OAuth2Authenticator(OAuth2Authentication properties, AccessTokenStore tokenStore) {
 		this.properties = properties;
-		this.generator = generator;
 		this.tokenStore = tokenStore;
-	}
-
-	public static OAuth2Authenticator getInstance(OAuth2Authentication properties, AccessTokenGenerator generator, AccessTokenStore tokenStore) {
-		return new OAuth2Authenticator(properties, generator, tokenStore);
+		
+		this.generator = new AccessTokenGeneratorFactory().create(properties.getTokenGenerator());
 	}
 
 	@Override

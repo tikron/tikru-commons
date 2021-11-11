@@ -55,12 +55,10 @@ public class MailMessenger extends BaseMessenger {
 	 */
 	private static Authenticator createAuthenticator(Authentication authentication, Path workDirectory) {
 		if (authentication instanceof PasswordAuthentication) {
-			return PasswordAuthenticator.getInstance((PasswordAuthentication) authentication);
+			return new PasswordAuthenticator((PasswordAuthentication) authentication);
 		} else if (authentication instanceof OAuth2Authentication) {
-			OAuth2Authentication properties = (OAuth2Authentication) authentication;
-			AccessTokenGenerator generator = new GoogleAccessTokenGenerator(properties.getClientId(), properties.getClientSecret(), properties.getRefreshToken());
 			AccessTokenStore tokenStore = new FileAccessTokenStore(workDirectory.resolve(ACCESS_TOKEN_FILE_NAME));
-			return OAuth2Authenticator.getInstance(properties, generator, tokenStore);
+			return new OAuth2Authenticator((OAuth2Authentication) authentication, tokenStore);
 		} else {
 			throw new IllegalArgumentException("Unsupported smtp authentication type.");
 		}

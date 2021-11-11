@@ -16,12 +16,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 public class OAuth2Authentication extends Authentication {
 
 	private String username;
-
-	private String clientId;
 	
-	private String clientSecret;
-	
-	private String refreshToken;
+	private TokenGenerator tokenGenerator;
 
 	public String getUsername() {
 		return username;
@@ -31,32 +27,16 @@ public class OAuth2Authentication extends Authentication {
 		this.username = username;
 	}
 
-	public String getClientId() {
-		return clientId;
+	public TokenGenerator getTokenGenerator() {
+		return tokenGenerator;
 	}
 
-	public void setClientId(String clientId) {
-		this.clientId = clientId;
-	}
-
-	public String getClientSecret() {
-		return clientSecret;
-	}
-
-	public void setClientSecret(String clientSecret) {
-		this.clientSecret = clientSecret;
-	}
-
-	public String getRefreshToken() {
-		return refreshToken;
-	}
-
-	public void setRefreshToken(String refreshToken) {
-		this.refreshToken = refreshToken;
+	public void setTokenGenerator(TokenGenerator tokenGenerator) {
+		this.tokenGenerator = tokenGenerator;
 	}
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).append("username", username).append("clientId", clientId).build();
+		return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).append("username", username).append("tokenGenerator", tokenGenerator).build();
 	}
 }

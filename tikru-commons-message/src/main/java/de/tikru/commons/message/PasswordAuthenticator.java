@@ -17,12 +17,8 @@ public class PasswordAuthenticator extends Authenticator {
 	
 	private final PasswordAuthentication properties;
 
-	private PasswordAuthenticator(PasswordAuthentication properties) {
+	public PasswordAuthenticator(PasswordAuthentication properties) {
 		this.properties = properties;
-	}
-	
-	public static PasswordAuthenticator getInstance(PasswordAuthentication properties) {
-		return new PasswordAuthenticator(properties);
 	}
 
 	@Override

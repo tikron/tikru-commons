@@ -18,6 +18,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * Utility class generating an access token for Google client application OAuth2 authentication. The token will be hold
  * in an instance of this class and renewed, if expired.
+ * 
+ * The script "/tikru-commons-message/script/google-oauth2.py" should be used to request the refresh token required for generating access tokens. 
  *
  * @author Titus Kruse
  * @since Nov 10, 2021
