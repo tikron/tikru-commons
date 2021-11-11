@@ -22,7 +22,7 @@ public class MessengerFactory {
 		} else if (config == null) {
 			return new DefaultMessenger();
 		} else {
-			throw new IllegalArgumentException("Unsupported messenger type.");
+			throw new IllegalArgumentException("Unsupported type of MessengerConfiguration: " + config.getClass());
 		}
 	}
 }

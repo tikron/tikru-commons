@@ -25,4 +25,7 @@ public class MessagingException extends RuntimeException {
 		super(cause);
 	}
 
+	public MessagingException(String message, Throwable cause) {
+		super(message, cause);
+	}
 }
