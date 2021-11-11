@@ -3,11 +3,7 @@
 	*/
 package de.tikru.commons.message;
 
-import java.io.File;
-
 import javax.mail.Authenticator;
-
-import de.tikru.commons.message.config.OAuth2Authentication;
 
 /**
 	* 
@@ -17,25 +13,29 @@ import de.tikru.commons.message.config.OAuth2Authentication;
 	*/
 public class OAuth2Authenticator extends Authenticator {
 	
-	private final OAuth2Authentication properties;
+	private final String username;
 	
-	private final GoogleAccessTokenGenerator generator;
-
-	private OAuth2Authenticator(OAuth2Authentication properties, File tokenStore) {
-		this.properties = properties;
-		this.generator = new GoogleAccessTokenGenerator(tokenStore, properties.getClientId(), properties.getClientSecret(), properties.getRefreshToken());
+	private final AccessTokenGenerator generator;
+	
+	private OAuth2Authenticator(String username, AccessTokenGenerator generator) {
+		this.username = username;
+		this.generator = generator;
 	}
-	
-	public static OAuth2Authenticator getInstance(OAuth2Authentication properties, File tokenStore) {
-		return new OAuth2Authenticator(properties, tokenStore);
+
+	public static OAuth2Authenticator getInstance(String username, AccessTokenGenerator generator) {
+		return new OAuth2Authenticator(username, generator);
 	}
 
 	@Override
 	protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
-		return new javax.mail.PasswordAuthentication(properties.getUsername(), generator.getToken());
+		return new javax.mail.PasswordAuthentication(username, generator.getToken());
 	}
 
-	public OAuth2Authentication getProperties() {
-		return properties;
+	public String getUsername() {
+		return username;
+	}
+
+	public AccessTokenGenerator getGenerator() {
+		return generator;
 	}
 }

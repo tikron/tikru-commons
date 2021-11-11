@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 	* @author Titus Kruse
 	* @since Nov 10, 2021
  */
-public class GoogleAccessToken {
+public class AccessToken {
 	
 	private String token;
 	private long expires;
@@ -20,12 +20,12 @@ public class GoogleAccessToken {
 	 * @param token The token string.
 	 * @param timeToLive Time to live in seconds.
 	 */
-	public GoogleAccessToken(String token, long timeToLive) {
+	public AccessToken(String token, long timeToLive) {
 		this.token = token;
 		this.expires = System.currentTimeMillis() + (timeToLive * 1000);
 	}
 
-	public GoogleAccessToken() {
+	public AccessToken() {
 	}
 
 	@JsonIgnore

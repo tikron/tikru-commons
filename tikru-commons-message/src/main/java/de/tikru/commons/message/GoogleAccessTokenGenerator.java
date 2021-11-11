@@ -27,7 +27,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author Titus Kruse
  * @since Nov 10, 2021
  */
-public class GoogleAccessTokenGenerator {
+public class GoogleAccessTokenGenerator implements AccessTokenGenerator {
 	
 	private final File tokenStore;
 
@@ -37,7 +37,7 @@ public class GoogleAccessTokenGenerator {
 
 	private final String refreshToken;
 
-	private GoogleAccessToken accessToken;
+	private AccessToken accessToken;
 
 	private static final String TOKEN_URL = "https://www.googleapis.com/oauth2/v4/token";
 
@@ -75,6 +75,7 @@ public class GoogleAccessTokenGenerator {
 	 * 
 	 * @return Access token string.
 	 */
+	@Override
 	public String getToken() {
 		// Restore cashed token
 		if (accessToken == null && tokenStore != null) {
@@ -95,7 +96,7 @@ public class GoogleAccessTokenGenerator {
 	 * 
 	 * @return Google access token object.
 	 */
-	private GoogleAccessToken refreshToken() {
+	private AccessToken refreshToken() {
 		try {
 			// Prepare POST request body
 			String request = "client_id=" + URLEncoder.encode(getClientId(), "UTF-8") + "&client_secret="
@@ -118,7 +119,7 @@ public class GoogleAccessTokenGenerator {
 						});
 				String accessToken = (String) result.get("access_token");
 				int expiresIn = ((Number) result.get("expires_in")).intValue();
-				return new GoogleAccessToken(accessToken, expiresIn);
+				return new AccessToken(accessToken, expiresIn);
 			} catch (IOException e) {
 				IOUtils.copy(connection.getErrorStream(), System.out);
 				throw e;
@@ -128,7 +129,7 @@ public class GoogleAccessTokenGenerator {
 		}
 	}
 
-	private void saveToken(GoogleAccessToken accessToken) {
+	private void saveToken(AccessToken accessToken) {
 		try {
 			ObjectMapper objectMapper = new ObjectMapper();
 			objectMapper.writeValue(tokenStore, accessToken);
@@ -137,11 +138,11 @@ public class GoogleAccessTokenGenerator {
 		}
 	}
 
-	private GoogleAccessToken restoreToken() {
+	private AccessToken restoreToken() {
 		try {
 			ObjectMapper objectMapper = new ObjectMapper();
 			try {
-				return objectMapper.readValue(tokenStore, GoogleAccessToken.class);
+				return objectMapper.readValue(tokenStore, AccessToken.class);
 			} catch (FileNotFoundException e) {
 				return null;
 			}
