@@ -3,12 +3,11 @@
  */
 package de.tikru.commons.faces.util;
 
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.servlet.ServletContext;
 
 /**
  * Static class providing some utility methods.
@@ -26,41 +25,25 @@ public class FacesUtil {
 	public static String getCurrentViewId() {
 		return FacesContext.getCurrentInstance().getViewRoot().getViewId();
 	}
-
-	/**
-	 * Returns the context path of the current request as URI.
-	 * 
-	 * @return The URI or null, if no URI can be constucted.
-	 */
-	public static URI getContextURI() {
-		try {
-			// The external context (Servlet or Portlet)
-			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-			// The web application context path
-			String contextPath = ((ServletContext) externalContext.getContext()).getContextPath();
-			// Construct URI
-			return new URI(externalContext.getRequestScheme(), externalContext.getRequestServerName(), contextPath, null);
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 	
 	/**
-	 * Returns the server URI of the current request.
+	 * Builds an absolute URL from the Faces external HTTP context and a given file path.
 	 * 
-	 * @return The URI or null, if no URI can be constucted.
+	 * @return The URL or null, if no URL can be constructed.
 	 */
-	public static URI getServerURI() {
+	public static URL buildURL(String file) {
 		try {
 			// The external context (Servlet or Portlet)
 			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-			// Construct URI
-			return new URI(externalContext.getRequestScheme(), externalContext.getRequestServerName(), null, null);
-		} catch (URISyntaxException e) {
+			// Construct URL
+			if (externalContext.getRequestServerPort() != -1) {
+				return new URL(externalContext.getRequestScheme(), externalContext.getRequestServerName(), externalContext.getRequestServerPort(), file);
+			} else {
+				return new URL(externalContext.getRequestScheme(), externalContext.getRequestServerName(), file);
+			}
+		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-
 }

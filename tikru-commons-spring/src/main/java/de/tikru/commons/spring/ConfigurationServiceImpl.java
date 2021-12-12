@@ -3,13 +3,13 @@
  */
 package de.tikru.commons.spring;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 import javax.servlet.ServletContext;
 
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.ServletContextAware;
@@ -38,20 +38,14 @@ public class ConfigurationServiceImpl implements ConfigurationService, ServletCo
 		if (properties == null) {
 			String environmentName = getEnvironment();
 			String configurationFileName = getConfigFileName(environmentName);
-			InputStream is = null;
-			try {
-				properties = new Properties();
-				is = ConfigurationServiceImpl.class.getClassLoader().getResourceAsStream(configurationFileName);
-				if (is != null) {
+			try (InputStream is = ConfigurationServiceImpl.class.getClassLoader().getResourceAsStream(configurationFileName)) {
 					logger.info(String.format("Loading configuration from file '%s'.", configurationFileName));
+					properties = new Properties();
 					properties.loadFromXML(is);
-				} else {
-					throw new ConfigurationException("Configuration file not found: " + configurationFileName);
-				}
+			} catch (FileNotFoundException e) {
+				throw new ConfigurationException("Configuration file not found: " + configurationFileName);
 			} catch (IOException e) {
 				throw new ConfigurationException(e.getMessage());
-			} finally {
-				IOUtils.closeQuietly(is);
 			}
 		}
 		return properties;

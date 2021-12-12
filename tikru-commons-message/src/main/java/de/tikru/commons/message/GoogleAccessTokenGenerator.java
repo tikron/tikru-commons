@@ -10,8 +10,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
-import org.apache.commons.io.IOUtils;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -77,7 +75,7 @@ public class GoogleAccessTokenGenerator implements AccessTokenGenerator {
 			int expiresIn = ((Number) result.get("expires_in")).intValue();
 			return new AccessToken(accessToken, expiresIn);
 		} catch (IOException e) {
-			IOUtils.copy(connection.getErrorStream(), System.out);
+			connection.getErrorStream().transferTo(System.out);
 			throw e;
 		}
 	}
