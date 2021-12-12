@@ -9,16 +9,12 @@
 	</parent>
 	<groupId>de.tikru.commons</groupId>
 	<artifactId>tikru-commons-util</artifactId>
-	<version>3.5</version>
+	<version>3.5.1</version>
 	<name>Tikru Common Utilities</name>
 	<properties>
 		<maven.test.skip>false</maven.test.skip>
 	</properties>
 	<dependencies>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
